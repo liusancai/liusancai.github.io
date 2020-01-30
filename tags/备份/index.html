@@ -7,13 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>归档: 2020/1 - 光明常在</title>
+<title>标签: 备份 - 光明常在</title>
 
 
     <meta name="description" content="一个网络工程师的自由之路">
 <meta property="og:type" content="website">
 <meta property="og:title" content="光明常在">
-<meta property="og:url" content="http://yoursite.com/archives/2020/01/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/%E5%A4%87%E4%BB%BD/index.html">
 <meta property="og:site_name" content="光明常在">
 <meta property="og:description" content="一个网络工程师的自由之路">
 <meta property="og:locale" content="zh_CN">
@@ -127,33 +127,73 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        一月 2020
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2020-01-30T10:40:51.000Z">2020-01-30</time>
-                        <a href="/2020/01/30/switch-back/" class="title has-link-black-ter is-size-6 has-text-weight-normal">网络设备自动备份</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">备份</a></li>
+        </ul>
+        </nav>
     </div>
 </div>
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-30T10:40:51.000Z">2020-01-30</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 981 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/30/switch-back/">网络设备自动备份</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="1-软件介绍"><a href="#1-软件介绍" class="headerlink" title="1.软件介绍"></a>1.软件介绍</h2><p>随着企业信息化的发展，更多的业务依赖于网络，核心业务对网络的要求更加的高，作为企业的网络管理人员，面对的大量的网络设备，造成了日常维护工作量大，没有有效的方式进行统一管理配置，不能快速的定位网络故障点，更新配置时需要手动登录交换机一台台的操作，给日常运维带来了很大的挑战。<br>虽然市场上有着成熟的网管软件，但是存在价格昂贵，部署复杂，自定义内容的配置少，不够自定义巡检内容，不能够批量下发配置等功能限制，导致很多企业的网管还是处在初期的人工手动维护状态，本软件具有程序小，无需部署，无需安装，使用方便等特点，主要功能如下：</p>
+<ol>
+<li>批量巡检</li>
+<li>自定义巡检</li>
+<li>批量关闭空闲端口</li>
+<li>批量开启全部端口</li>
+<li>配置端口安全功能</li>
+<li>批量保存配置<br>&ensb;目前软件支持市场长大部分厂家设备，华为，华三，思科，锐捷，中兴，博达，迈普，贝尔等8个厂商的设备。软件支持二次定制开发，根据网络中的设备进行匹配。<h2 id="2-软件功能"><a href="#2-软件功能" class="headerlink" title="2.软件功能"></a>2.软件功能</h2></li>
+</ol>
+<ul>
+<li>批量巡检功能自动登录网络设备，执行命令，形成日志文件后，分析文件生成巡检报告，报告内容包含单台网络设备的启动设备，设备版本，风扇，电源，cpu，内存使用率等，对在网的所有设备的mac地址表和arp表进行整合表格，方便了解网络设备和终端设备的信息。只有日常巡检能够生成报表，其他功能无报表。</li>
+<li>自定义巡检功能能够根据自定义的命令对交换机下发配置命令，打开conf文件夹下的各厂商配置文件，在def=字段后面输入本次需要执行的命令即可。</li>
+<li>批量关端空闲端口，通过运行交换机查看mac地址的命令，进行分析端口下的mac地址情况，对于没有使用的端口进行自动关闭操作。</li>
+<li>批量开启全部端口，通过分析设备的运行配置分析出设备的所有端口，根据分析出的端口列表，自动进入端口模式，执行开启端口操作。</li>
+<li>配置端口安全功能是根据分析端口下的配置信息，mac地址信息，自动根据预设好的端口安全配置方式，进行全网设备的统一配置。</li>
+<li>批量保存配置功能是根据设备列表登录到设备中，执行保存配置的命令，为了防止配置丢失导致的网络故障。<h2 id="3-使用准备"><a href="#3-使用准备" class="headerlink" title="3.使用准备"></a>3.使用准备</h2>使用软件之前，需要准备一个设备列表的excel文件，按照示例内容填写。主要如下：<br>序号    IP    用户名    密码    特权密码    厂商    端口    设备功能    站点名称    备注<br>1    192.168.1.1    user    password    rootword    h3c    22    switch    测试1<br>2    192.168.1.2    user    password        h3c    22    router    测试2<br>提示：该文件保存了设备的用户密码信息，请管理员妥善保管此文件，防止文件泄露，造成网络信息安全问题。<br>定制功能使用前先测试，各位工程师的配置不太一样。<br>下载地址：百度网盘<br>链接: <a href="https://pan.baidu.com/s/1VUTJhLFTJ6_kr_2XvJdB0w">https://pan.baidu.com/s/1VUTJhLFTJ6_kr_2XvJdB0w</a> 提取码: guuv</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
 
 
 </div>
