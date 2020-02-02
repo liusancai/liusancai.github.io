@@ -7,20 +7,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>H3C交换机基础操作 - 光明常在</title>
+<title>H3C交换机基础操作 - 自由的网工</title>
 
 
-    <meta name="description" content="一、配置本地用户认证全局配置模式下 创建用户，配置用户名为test用户 local-user test class manage 配置用户密码为Password123 password simple Password123 配置用户登录方式为SSH service-type ssh 配置用户权限等级为0 authorization-attribute user-role level-0 配置特权密">
+    <meta name="description" content="一、配置本地用户认证全局配置模式下 创建用户，配置用户名为test用户 local-user test class manage 配置用户密码为Password123 password simple Password123 配置用户登录方式为SSH service-type ssh 配置用户权限等级为0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="H3C交换机基础操作">
 <meta property="og:url" content="http://mmdav0.coding-pages.com/2020/swithc-h3c-01/index.html">
-<meta property="og:site_name" content="光明常在">
-<meta property="og:description" content="一、配置本地用户认证全局配置模式下 创建用户，配置用户名为test用户 local-user test class manage 配置用户密码为Password123 password simple Password123 配置用户登录方式为SSH service-type ssh 配置用户权限等级为0 authorization-attribute user-role level-0 配置特权密">
+<meta property="og:site_name" content="自由的网工">
+<meta property="og:description" content="一、配置本地用户认证全局配置模式下 创建用户，配置用户名为test用户 local-user test class manage 配置用户密码为Password123 password simple Password123 配置用户登录方式为SSH service-type ssh 配置用户权限等级为0">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://mmdav0.coding-pages.com/images/og_image.png">
 <meta property="article:published_time" content="2020-02-01T08:45:08.000Z">
-<meta property="article:modified_time" content="2020-02-01T08:48:05.732Z">
-<meta property="article:author" content="SAN">
+<meta property="article:modified_time" content="2020-02-02T05:44:07.335Z">
+<meta property="article:author" content="光明常在">
 <meta property="article:tag" content="交换机">
 <meta property="article:tag" content="H3C">
 <meta property="article:tag" content="华三">
@@ -170,9 +170,9 @@
 <p>配置用户登录方式为SSH</p>
 <p>service-type ssh</p>
 <p>配置用户权限等级为0</p>
+<a id="more"></a>
 <p>authorization-attribute user-role level-0</p>
 <p>配置特权密码为testpassword</p>
-<a id="more"></a>
 <p>super password simple testpassword</p>
 <p>配置示例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[H3C]local-user test class manage</span><br><span class="line">New local user added.</span><br><span class="line">[H3C-luser-manage-test]password simple Password123</span><br><span class="line">[H3C-luser-manage-test]service-type ssh</span><br><span class="line">[H3C-luser-manage-test]authorization-attribute user-role level-0</span><br><span class="line">[H3C-luser-manage-test]exit</span><br><span class="line">[H3C]super password simple testpassword</span><br><span class="line">[H3C]</span><br></pre></td></tr></table></figure>
@@ -314,8 +314,46 @@
         
         
         
+		</div>
+	<div class="card" >
+		<div class="card-content" >
+			<!-- 《添加版权声明 -->
+			
+				<!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare">
+    <strong class="author">	本文作者：</strong>
+    
+      光明常在
+    
+    <br>
+    <strong class="create-time">	发布时间：</strong>
+    2020-02-01
+    <br>
+    <strong class="update-time">	最后更新：</strong>
+    2020-02-02
+    <br>
+    <strong class="article-titles">	本文标题：</strong>
+    <a href="http://mmdav0.coding-pages.com/2020/swithc-h3c-01/" title="H3C交换机基础操作" target="_blank">H3C交换机基础操作</a>
+    <br>
+    <strong class="article-url">	本文链接：</strong>
+    <a href="http://mmdav0.coding-pages.com/2020/swithc-h3c-01/" title="H3C交换机基础操作" target="_blank">http://mmdav0.coding-pages.com/2020/swithc-h3c-01/</a>
+    <br>
+    <strong class="copyright">	版权声明：</strong>
+    本作品采用
+    <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" title="知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议">CC BY-NC-SA 4.0</a>
+    许可协议进行许可，转载请注明出处！
+  </div>
+
+<!-- 添加版权声明》 -->
+			
+			<!-- 添加版权声明》 -->
+			</div>
+	</div>
     </div>
-</div>
 
 
 
@@ -892,51 +930,30 @@
         </div>
     </section>
     <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
-                
-                    <img src="/images/ico.ico" alt="H3C交换机基础操作" height="28">
-                
-                </a>
-                <p class="is-size-7">
-                &copy; 2020 SAN&nbsp;
+    <div  align="center" class="container">
+		<div class="container">
+		<img src="https://static.dy208.cn/o_1dfilp8ruo521thr1hvf18ji17soa.png">
+		<a href="http://www.beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">皖ICP:0000号</a>
+	</div>
+	
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+        <div>
+            <div   class="level-start has-text-centered-mobile">
+                <p align="center" class="is-size-7">
+                &copy; 2020 光明常在&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
                 </p>
-            </div>
-            <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
-                        
-                        <i class="fab fa-creative-commons"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
-                        
-                        <i class="fab fa-creative-commons-by"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
-            
             </div>
         </div>
     </div>
