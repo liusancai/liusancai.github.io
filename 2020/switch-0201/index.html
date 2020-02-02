@@ -161,6 +161,8 @@
                 各类交换机配置关闭分页(more)提示
             
         </h1>
+		<!-- 添加横线  -->
+		<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
         <div class="content">
             <p>  在配置自动化运维的时候，我们对交换机进行巡检，因为不是人工手动操作，所以为了效率，我们需要对交换机配置关闭more提示，同时为了防止干扰<br>  我们需要关闭终端提示，来达到最好的巡检效果。下面介绍各类交换机配置的方式：</p>
 <p>  华为和H3C的交换机配置方式一样：</p>
@@ -169,20 +171,6 @@
 <p>  思科和锐捷交换机配置:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">conf t #进入配置模式</span><br><span class="line">    logging monitor 0 #关闭提示</span><br><span class="line">    line vty 0 4 #进入虚拟终端模式</span><br><span class="line">        length 0 #配置关闭分页</span><br><span class="line">        end #退出到系统模式</span><br></pre></td></tr></table></figure><br>  迈普和贝尔交换机配置：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">more off #关闭分页</span><br><span class="line">configure terminal #进入配置模式</span><br><span class="line">    logging monitor 0 #关闭分页模式</span><br><span class="line">    end #退出到系统模式</span><br></pre></td></tr></table></figure><br>  博达交换机配置：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">config #进入配置模式</span><br><span class="line">    line vty 0 4 #进入虚拟终端配置</span><br><span class="line">        length 0 #关闭分页</span><br><span class="line">        exit #退出</span><br><span class="line">    exit #退出</span><br><span class="line">注意:博达交换机没有找到配置关闭信息提示配置项</span><br></pre></td></tr></table></figure><br>  中兴交换机配置：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">terminal length 0 #直接在系统模式配置</span><br></pre></td></tr></table></figure><br>  针对各类交换机恢复配置，只需要针对上面的配置，进行undo 或者 no 即可，不在演示。</p>
 
         </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" rel="tag">交换机</a>, <a class="has-link-grey -link" href="/tags/%E5%8D%8E%E4%B8%BA/" rel="tag">华为</a>, <a class="has-link-grey -link" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" rel="tag">自动化运维</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-		</div>
-	<div class="card" >
 		<div class="card-content" >
 			<!-- 《添加版权声明 -->
 			
@@ -197,19 +185,23 @@
       光明常在
     
     <br>
-    <strong class="create-time">	发布时间：</strong>
+    <strong class="create-time">发布时间：</strong>
     2020-02-01
     <br>
-    <strong class="update-time">	最后更新：</strong>
+    <strong class="update-time">最后更新：</strong>
     2020-02-02
     <br>
-    <strong class="article-titles">	本文标题：</strong>
+	<!-- 添加阅读  -->
+	<strong class="article-titles">本文阅读： </strong><span id="busuanzi_value_page_pv"></span>次
+	<br>
+	</span>
+    <strong class="article-titles">本文标题：</strong>
     <a href="http://mmdav0.coding-pages.com/2020/switch-0201/" title="各类交换机配置关闭分页(more)提示" target="_blank">各类交换机配置关闭分页(more)提示</a>
     <br>
-    <strong class="article-url">	本文链接：</strong>
+    <strong class="article-url">本文链接：</strong>
     <a href="http://mmdav0.coding-pages.com/2020/switch-0201/" title="各类交换机配置关闭分页(more)提示" target="_blank">http://mmdav0.coding-pages.com/2020/switch-0201/</a>
     <br>
-    <strong class="copyright">	版权声明：</strong>
+    <strong class="copyright">版权声明：</strong>
     本作品采用
     <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" title="知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议">CC BY-NC-SA 4.0</a>
     许可协议进行许可，转载请注明出处！
@@ -218,8 +210,21 @@
 <!-- 添加版权声明》 -->
 			
 			<!-- 添加版权声明》 -->
-			</div>
-	</div>
+		</div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" rel="tag">交换机</a>, <a class="has-link-grey -link" href="/tags/%E5%8D%8E%E4%B8%BA/" rel="tag">华为</a>, <a class="has-link-grey -link" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" rel="tag">自动化运维</a>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+		</div>
     </div>
 
 
