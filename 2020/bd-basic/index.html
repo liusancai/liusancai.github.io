@@ -10,11 +10,29 @@
 <title>博达交换机基础操作 - 自由的网工</title>
 
 
+    <meta name="description" content="一、配置本地用户认证全局配置模式下创建用户，配置用户名为test用户，密码为testusername test password 0 test配置特权密码为testpasswordenable password testpassword开启密码加密，防止配置里明文保存密码service password-encryption配置认证为本地用户认证aaa authentication login d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博达交换机基础操作">
+<meta property="og:url" content="http://mmdav0.coding-pages.com/2020/bd-basic/index.html">
+<meta property="og:site_name" content="自由的网工">
+<meta property="og:description" content="一、配置本地用户认证全局配置模式下创建用户，配置用户名为test用户，密码为testusername test password 0 test配置特权密码为testpasswordenable password testpassword开启密码加密，防止配置里明文保存密码service password-encryption配置认证为本地用户认证aaa authentication login d">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://mmdav0.coding-pages.com/images/og_image.png">
+<meta property="article:published_time" content="2020-02-03T04:00:47.000Z">
+<meta property="article:modified_time" content="2020-02-03T08:28:53.541Z">
+<meta property="article:author" content="光明常在">
+<meta property="article:tag" content="交换机">
+<meta property="article:tag" content="博达">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mmdav0.coding-pages.com/images/og_image.png">
 
 
 
 
 
+
+
+<link rel="icon" href="/images/favicon.svg">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
@@ -23,23 +41,86 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
 
 
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
 <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="is-1-column">
+<body class="is-3-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="博达交换机基础操作" height="28">
+                <img src="/images/ico.ico" alt="博达交换机基础操作" height="28">
             
             </a>
         </div>
         <div class="navbar-menu">
             
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about/">关于我</a>
+                
+            </div>
+            
             <div class="navbar-end">
                 
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/liusancai">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
                 
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
                 
             </div>
         </div>
@@ -50,7 +131,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-12 has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 
 <div class="card">
     
@@ -91,57 +172,67 @@
         </h1>
         <div class="content">
 			<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
-            <p>一、配置本地用户认证<br>全局配置模式下<br>创建用户，配置用户名为test用户，密码为test<br>username test password 0 test<br>配置特权密码为testpassword<br>enable password testpassword<br>开启密码加密，防止配置里明文保存密码<br>service password-encryption<br>配置认证为本地用户认证<br>aaa authentication login default local   </p>
+            <h1 id="一、配置本地用户认证"><a href="#一、配置本地用户认证" class="headerlink" title="一、配置本地用户认证"></a>一、配置本地用户认证</h1><p>全局配置模式下<br>创建用户，配置用户名为test用户，密码为test<br>username test password 0 test<br>配置特权密码为testpassword<br>enable password testpassword<br>开启密码加密，防止配置里明文保存密码<br>service password-encryption<br>配置认证为本地用户认证<br>aaa authentication login default local   </p>
 <a id="more"></a> 
 <p>配置进行特权认证时使用enable的密码<br>aaa authentication enable default enable<br>配置示例：  </p>
-<pre><code>bdcom_config#username test password 0 test    
-bdcom_config#enable password testpassword    
-bdcom_config#service password-encryption    
-bdcom_config#aaa authentication login default local    
-bdcom_config#aaa authentication enable default enable    </code></pre><p>二、配置VLAN<br>全局配置模式下，创建vlan 10<br>Vlan 10<br>添加描述信息<br>description Bangong<br>配置示例：</p>
-<pre><code>bdcom#config     
-bdcom_config#vlan 2    
-bdcom_config_vlan2#name Management    
-bdcom_config_vlan2#exit    
-bdcom_config#    </code></pre><p>三、端口加入VLAN<br>配置access类型端口<br>全局模式下进入端口配置模式<br>进入fa0/1<br>interface fastEthernet0/1<br>配置端口模式为access模式<br>switchport mode access<br>配置端口所属vlan<br>switchport pvid 10<br>配置示例：</p>
-<pre><code>bdcom_config#interface fastEthernet0/1    
-bdcom_config_f0/1#switchport mode access    
-bdcom_config_f0/1#switchport pvid 10    
-bdcom_config_f0/1#exit    
-bdcom_config#  </code></pre><p>配置trunk类型端口（trunk类型端口适用于交换机接交换机）<br>全局模式下进入端口配置模式<br>进入G0/1<br>interface GigaEthernet0/1<br>配置端口模式为trunk模式<br>switchport mode trunk<br>配置端口允许通过的VLAN<br>switchport trunk vlan-allowed all<br>配置示例：</p>
-<pre><code>bdcom_config#interface GigaEthernet0/1    
-bdcom_config_g0/1#switchport mode trunk    
-bdcom_config_g0/1#switchport trunk vlan-allowed all    
-bdcom_config_g0/1#exit    
-bdcom_config#    </code></pre><p>四、配置接口 VLAN IP<br>全局模式下进入vlanif接口配置模式<br>进入vlan10 三层接口<br>interface VLAN10<br>配置IP地址 192.168.1.1 掩码255.255.255.0<br>ip address 192.168.1.1 255.255.255.0<br>配置示例：   </p>
-<pre><code>bdcom#config     
-bdcom_config#int vlAN 10    
-bdcom_config_v2#ip address 192.168.1.1 255.255.255.0    
-bdcom_config_v2#exit    
-bdcom_config#    </code></pre><p>五、配置静态默认路由<br>全局配置模式下，配置默认路由的下一跳为192.168.1.2<br>ip route default 192.168.1.2<br>配置静态路由：<br>ip route 192.168.2.0 255.255.255.0 192.168.1.2    </p>
-<p>六、配置生成树选项<br>生成树配置需要结合当地网络进行配置，要所有运行在一个拓扑能开启生成树功能的交换机，生成树配置一样。<br>全局模式下关闭生成树功能<br>No spanning-tree<br>配置生成树模式为mstp(配置了模式就开启了生成树)<br>spanning-tree mode mstp<br>配置MST域名<br>spanning-tree mstp nametest<br>配置实例1包含vlan10,vlan20<br>spanning-tree mstp instance 1 vlan 10,20<br>激活MST域配置<br> active region-configuration<br>不包含实例中的vlan，全部属于默认实例0，如vlan1默认属于实例0<br>配置示例： </p>
-<pre><code>bdcom_config#spanning-tree mode mstp    
-bdcom_config#spanning-tree mstp name test    
-bdcom_config#spanning-tree mstp instance 1 vlan 10    </code></pre><p>七、配置ACL访问控制策略<br>进入acl配置模式<br>ip access-list standard 2000  #数字可配置2000-2999,基础ACL配置，供电网络中采用基础acl#<br>配置一条允许24.50.0.67主机<br>permit 24.50.0.67 255.255.255.255<br>配置一条允许23.50.6.0网段<br>permit 23.50.6.0 255.255.255.0<br>剩余的全部禁止<br> Deny any<br>配置acl注意匹配规则是从上往下匹配，比如rule10 deny已经拒绝了除0,5匹配到的，剩余的都是禁止。这时候rule 15 permit source 23.50.7.0 0.0.0.255，则该策略不生效，23.50.7.0网段还是被全部禁止。<br>配置示例： </p>
-<pre><code>bdcom_config#ip access-list standard 2000    
-bdcom_config_std#permit 24.50.0.67 255.255.255.255    
-bdcom_config_std#permit 23.50.6.0 255.255.255.0    
-bdcom_config_std#deny any    
-bdcom_config_std#exit    
-bdcom_config    </code></pre><p>八、配置SSH远程登陆<br>全局开启ssh服务<br>ip sshd enable<br>配置ssh服务认证方法列表，默认情况下使用default列表，按照第一节的配置，default的认证方式是local。也可以直接新建认证方法。我们这里都采用默认的，下面命令可以不需要。<br>ip sshd auth-method default<br>配置ssh服务使用的ACL,需要先关闭服务才能启用控制列表<br>ip sshd access-class 2000<br>配置示例：  </p>
-<pre><code>bdcom_config#ip sshd auth-method default    
-bdcom_config#ip sshd access-class 2000    
-bdcom_config#ip sshd enable    </code></pre><p>九、配置时钟同步和时区<br>全局模式下配置时区为北京时区(加8小时)<br>time-zone Beijin 8 0<br>全局模式下配置时钟服务器10.109.192.5为第一个时钟服务器<br>sntp server 10.109.192.5 1<br>全局模式下配置时钟服务器10.109.192.43为备用时钟服务器<br>sntp server 10.109.192.43<br>配置示例：</p>
-<pre><code>bdcom_config#time-zone Beijin 8 0    
-bdcom_config#sntp server 10.109.192.5 1    
-bdcom_config#sntp server 10.109.192.43    </code></pre><p>十、备份和还原IOS<br>交换机用户模式下通过tftp备份iso固件到23.50.6.99服务器<br>格式：copy flash:Switch.bin  tftp:文件名 IP<br>copy flash:Switch.bin tftp:123.bin 23.50.6.99<br>交换机用户模式下通过tftp服务器还原IOS到交换机中<br>格式：copy tftp:123.bin flash:Switch.bin 23.50.6.99<br>配置示例：    </p>
-<pre><code>bdcom#copy flash:Switch.bin tftp:123.bin 23.50.6.99     
-bdcom#copy tftp:123.bin flash:Switch.bin 23.50.6.99 </code></pre><p>Tftp服务器可以下载软件3CDaemon在电脑上运行即可。    </p>
-<p>十一、交换机常规巡检命令<br>查看三层接口Ip地址<br>show ip interface brief<br>查看二层接口状态信息<br>show interface brief<br>查看交换机的mac地址表<br>show mac address-table<br>查看交换机的arp表<br>show arp<br>查看交换机的生成树状态<br>show spanning-tree<br>查看交换机版本<br>show version<br>查看交换机cpu使用状态<br>Showcpu<br>查看交换机内存使用状态<br>show memory region    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bdcom_config#username test password 0 test    </span><br><span class="line">bdcom_config#enable password testpassword    </span><br><span class="line">bdcom_config#service password-encryption    </span><br><span class="line">bdcom_config#aaa authentication login default local    </span><br><span class="line">bdcom_config#aaa authentication enable default enable</span><br></pre></td></tr></table></figure>
+<h1 id="二、配置VLAN"><a href="#二、配置VLAN" class="headerlink" title="二、配置VLAN"></a>二、配置VLAN</h1><p>全局配置模式下，创建vlan 10<br>Vlan 10<br>添加描述信息<br>description Bangong<br>配置示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bdcom#config     </span><br><span class="line">bdcom_config#vlan 2    </span><br><span class="line">bdcom_config_vlan2#name Management    </span><br><span class="line">bdcom_config_vlan2#exit    </span><br><span class="line">bdcom_config#</span><br></pre></td></tr></table></figure>
+<h1 id="三、端口加入VLAN"><a href="#三、端口加入VLAN" class="headerlink" title="三、端口加入VLAN"></a>三、端口加入VLAN</h1><p>配置access类型端口<br>全局模式下进入端口配置模式<br>进入fa0/1<br>interface fastEthernet0/1<br>配置端口模式为access模式<br>switchport mode access<br>配置端口所属vlan<br>switchport pvid 10<br>配置示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bdcom_config#interface fastEthernet0&#x2F;1    </span><br><span class="line">bdcom_config_f0&#x2F;1#switchport mode access    </span><br><span class="line">bdcom_config_f0&#x2F;1#switchport pvid 10    </span><br><span class="line">bdcom_config_f0&#x2F;1#exit    </span><br><span class="line">bdcom_config#</span><br></pre></td></tr></table></figure>
+<p>配置trunk类型端口（trunk类型端口适用于交换机接交换机）<br>全局模式下进入端口配置模式<br>进入G0/1<br>interface GigaEthernet0/1<br>配置端口模式为trunk模式<br>switchport mode trunk<br>配置端口允许通过的VLAN<br>switchport trunk vlan-allowed all<br>配置示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bdcom_config#interface GigaEthernet0&#x2F;1    </span><br><span class="line">bdcom_config_g0&#x2F;1#switchport mode trunk    </span><br><span class="line">bdcom_config_g0&#x2F;1#switchport trunk vlan-allowed all    </span><br><span class="line">bdcom_config_g0&#x2F;1#exit    </span><br><span class="line">bdcom_config#</span><br></pre></td></tr></table></figure>
+<h1 id="四、配置接口-VLAN-IP"><a href="#四、配置接口-VLAN-IP" class="headerlink" title="四、配置接口 VLAN IP"></a>四、配置接口 VLAN IP</h1><p>全局模式下进入vlanif接口配置模式<br>进入vlan10 三层接口<br>interface VLAN10<br>配置IP地址 192.168.1.1 掩码255.255.255.0<br>ip address 192.168.1.1 255.255.255.0<br>配置示例：   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bdcom#config     </span><br><span class="line">bdcom_config#int vlAN 10    </span><br><span class="line">bdcom_config_v2#ip address 192.168.1.1 255.255.255.0    </span><br><span class="line">bdcom_config_v2#exit    </span><br><span class="line">bdcom_config#</span><br></pre></td></tr></table></figure>
+<h1 id="五、配置静态默认路由"><a href="#五、配置静态默认路由" class="headerlink" title="五、配置静态默认路由"></a>五、配置静态默认路由</h1><p>全局配置模式下，配置默认路由的下一跳为192.168.1.2<br>ip route default 192.168.1.2<br>配置静态路由：<br>ip route 192.168.2.0 255.255.255.0 192.168.1.2    </p>
+<h1 id="六、配置生成树选项"><a href="#六、配置生成树选项" class="headerlink" title="六、配置生成树选项"></a>六、配置生成树选项</h1><p>生成树配置需要结合当地网络进行配置，要所有运行在一个拓扑能开启生成树功能的交换机，生成树配置一样。<br>全局模式下关闭生成树功能<br>No spanning-tree<br>配置生成树模式为mstp(配置了模式就开启了生成树)<br>spanning-tree mode mstp<br>配置MST域名<br>spanning-tree mstp nametest<br>配置实例1包含vlan10,vlan20<br>spanning-tree mstp instance 1 vlan 10,20<br>激活MST域配置<br> active region-configuration<br>不包含实例中的vlan，全部属于默认实例0，如vlan1默认属于实例0<br>配置示例： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bdcom_config#spanning-tree mode mstp    </span><br><span class="line">bdcom_config#spanning-tree mstp name test    </span><br><span class="line">bdcom_config#spanning-tree mstp instance 1 vlan 10</span><br></pre></td></tr></table></figure>
+<h1 id="七、配置ACL访问控制策略"><a href="#七、配置ACL访问控制策略" class="headerlink" title="七、配置ACL访问控制策略"></a>七、配置ACL访问控制策略</h1><p>进入acl配置模式<br>ip access-list standard 2000  #数字可配置2000-2999,基础ACL配置，供电网络中采用基础acl#<br>配置一条允许24.50.0.67主机<br>permit 24.50.0.67 255.255.255.255<br>配置一条允许23.50.6.0网段<br>permit 23.50.6.0 255.255.255.0<br>剩余的全部禁止<br> Deny any<br>配置acl注意匹配规则是从上往下匹配，比如rule10 deny已经拒绝了除0,5匹配到的，剩余的都是禁止。这时候rule 15 permit source 23.50.7.0 0.0.0.255，则该策略不生效，23.50.7.0网段还是被全部禁止。<br>配置示例： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bdcom_config#ip access-list standard 2000    </span><br><span class="line">bdcom_config_std#permit 24.50.0.67 255.255.255.255    </span><br><span class="line">bdcom_config_std#permit 23.50.6.0 255.255.255.0    </span><br><span class="line">bdcom_config_std#deny any    </span><br><span class="line">bdcom_config_std#exit    </span><br><span class="line">bdcom_config</span><br></pre></td></tr></table></figure>
+<h1 id="八、配置SSH远程登陆"><a href="#八、配置SSH远程登陆" class="headerlink" title="八、配置SSH远程登陆"></a>八、配置SSH远程登陆</h1><p>全局开启ssh服务<br>ip sshd enable<br>配置ssh服务认证方法列表，默认情况下使用default列表，按照第一节的配置，default的认证方式是local。也可以直接新建认证方法。我们这里都采用默认的，下面命令可以不需要。<br>ip sshd auth-method default<br>配置ssh服务使用的ACL,需要先关闭服务才能启用控制列表<br>ip sshd access-class 2000<br>配置示例：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bdcom_config#ip sshd auth-method default    </span><br><span class="line">bdcom_config#ip sshd access-class 2000    </span><br><span class="line">bdcom_config#ip sshd enable</span><br></pre></td></tr></table></figure>
+<h1 id="九、配置时钟同步和时区"><a href="#九、配置时钟同步和时区" class="headerlink" title="九、配置时钟同步和时区"></a>九、配置时钟同步和时区</h1><p>全局模式下配置时区为北京时区(加8小时)<br>time-zone Beijin 8 0<br>全局模式下配置时钟服务器10.109.192.5为第一个时钟服务器<br>sntp server 10.109.192.5 1<br>全局模式下配置时钟服务器10.109.192.43为备用时钟服务器<br>sntp server 10.109.192.43<br>配置示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bdcom_config#time-zone Beijin 8 0    </span><br><span class="line">bdcom_config#sntp server 10.109.192.5 1    </span><br><span class="line">bdcom_config#sntp server 10.109.192.43</span><br></pre></td></tr></table></figure>
+<h1 id="十、备份和还原IOS"><a href="#十、备份和还原IOS" class="headerlink" title="十、备份和还原IOS"></a>十、备份和还原IOS</h1><p>交换机用户模式下通过tftp备份iso固件到23.50.6.99服务器<br>格式：copy flash:Switch.bin  tftp:文件名 IP<br>copy flash:Switch.bin tftp:123.bin 23.50.6.99<br>交换机用户模式下通过tftp服务器还原IOS到交换机中<br>格式：copy tftp:123.bin flash:Switch.bin 23.50.6.99<br>配置示例：    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bdcom#copy flash:Switch.bin tftp:123.bin 23.50.6.99     </span><br><span class="line">bdcom#copy tftp:123.bin flash:Switch.bin 23.50.6.99</span><br></pre></td></tr></table></figure>
+<p>Tftp服务器可以下载软件3CDaemon在电脑上运行即可。    </p>
+<h1 id="十一、交换机常规巡检命令"><a href="#十一、交换机常规巡检命令" class="headerlink" title="十一、交换机常规巡检命令"></a>十一、交换机常规巡检命令</h1><p>查看三层接口Ip地址<br>show ip interface brief<br>查看二层接口状态信息<br>show interface brief<br>查看交换机的mac地址表<br>show mac address-table<br>查看交换机的arp表<br>show arp<br>查看交换机的生成树状态<br>show spanning-tree<br>查看交换机版本<br>show version<br>查看交换机cpu使用状态<br>Showcpu<br>查看交换机内存使用状态<br>show memory region    </p>
 
         </div>
 		<div class="card-content" >
 			<!-- 《添加版权声明 -->
+			
+				<!-- 《添加版权声明 -->
+<!--添加版权声明https://github.com/JoeyBling/hexo-theme-yilia-plus/commit/c1215e132f6d5621c5fea83d3c4f7ccbcca074a3-->
+
+<!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
+
+  <div class="declare">
+    <strong class="author">	本文作者：</strong>
+    
+      光明常在
+    
+    <br>
+    <strong class="create-time">发布时间：</strong>
+    2020-02-03
+    <br>
+    <strong class="update-time">最后更新：</strong>
+    2020-02-03
+    <br>
+	</span>
+    <strong class="article-titles">本文标题：</strong>
+    <a href="http://mmdav0.coding-pages.com/2020/bd-basic/" title="博达交换机基础操作" target="_blank">博达交换机基础操作</a>
+    <br>
+    <strong class="article-url">本文链接：</strong>
+    <a href="http://mmdav0.coding-pages.com/2020/bd-basic/" title="博达交换机基础操作" target="_blank">http://mmdav0.coding-pages.com/2020/bd-basic/</a>
+    <br>
+    <strong class="copyright">版权声明：</strong>
+    本作品采用
+    <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" title="知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议">CC BY-NC-SA 4.0</a>
+    许可协议进行许可，转载请注明出处！
+  </div>
+
+<!-- 添加版权声明》 -->
 			
 			<!-- 添加版权声明》 -->
 		</div>
@@ -161,6 +252,35 @@ bdcom#copy tftp:123.bin flash:Switch.bin 23.50.6.99 </code></pre><p>Tftp服务�
     </div>
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/zfb.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
 
 
 
@@ -188,7 +308,555 @@ bdcom#copy tftp:123.bin flash:Switch.bin 23.50.6.99 </code></pre><p>Tftp服务�
 
 </div>
                 
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/ico.ico" alt="光明常在">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        光明常在
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        QQ:313712640
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>安徽 安庆</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            7
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            2
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            10
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/liusancai" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/liusancai">
                 
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/maipu/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="迈普交换机基础操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T04:15:08.000Z">2020-02-03</time></div>
+                    <a href="/2020/maipu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">迈普交换机基础操作</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/bd-basic/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="博达交换机基础操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T04:00:47.000Z">2020-02-03</time></div>
+                    <a href="/2020/bd-basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">博达交换机基础操作</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/zte-port-sec/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="中兴交换机端口安全配置">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T03:41:35.000Z">2020-02-03</time></div>
+                    <a href="/2020/zte-port-sec/" class="title has-link-black-ter is-size-6 has-text-weight-normal">中兴交换机端口安全配置</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/zte-basic/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="中兴交换机基础操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T03:30:04.000Z">2020-02-03</time></div>
+                    <a href="/2020/zte-basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">中兴交换机基础操作</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/swithc-h3c-01/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="H3C交换机基础操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-01T08:45:08.000Z">2020-02-01</time></div>
+                    <a href="/2020/swithc-h3c-01/" class="title has-link-black-ter is-size-6 has-text-weight-normal">H3C交换机基础操作</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/H3C/">
+                        <span class="tag">H3C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ZTE/">
+                        <span class="tag">ZTE</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%B8%AD%E5%85%B4/">
+                        <span class="tag">中兴</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+                        <span class="tag">交换机</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%8E%E4%B8%89/">
+                        <span class="tag">华三</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%8E%E4%B8%BA/">
+                        <span class="tag">华为</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%8D%9A%E8%BE%BE/">
+                        <span class="tag">博达</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E5%A4%87%E4%BB%BD/">
+                        <span class="tag">备份</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">
+                        <span class="tag">自动化运维</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%BF%88%E6%99%AE/">
+                        <span class="tag">迈普</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/liusancai" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">
+            <span class="level-start">
+                <span class="level-item">网络技术</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">
+            <span class="level-start">
+                <span class="level-item">网络基础</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/H3C/" style="font-size: 10px;">H3C</a> <a href="/tags/ZTE/" style="font-size: 15px;">ZTE</a> <a href="/tags/%E4%B8%AD%E5%85%B4/" style="font-size: 15px;">中兴</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" style="font-size: 20px;">交换机</a> <a href="/tags/%E5%8D%8E%E4%B8%89/" style="font-size: 10px;">华三</a> <a href="/tags/%E5%8D%8E%E4%B8%BA/" style="font-size: 10px;">华为</a> <a href="/tags/%E5%8D%9A%E8%BE%BE/" style="font-size: 10px;">博达</a> <a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 10px;">备份</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" style="font-size: 15px;">自动化运维</a> <a href="/tags/%E8%BF%88%E6%99%AE/" style="font-size: 10px;">迈普</a>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/liusancai" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Github</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">
+            <span class="level-start">
+                <span class="level-item">网络技术</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">
+            <span class="level-start">
+                <span class="level-item">网络基础</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/H3C/" style="font-size: 10px;">H3C</a> <a href="/tags/ZTE/" style="font-size: 15px;">ZTE</a> <a href="/tags/%E4%B8%AD%E5%85%B4/" style="font-size: 15px;">中兴</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" style="font-size: 20px;">交换机</a> <a href="/tags/%E5%8D%8E%E4%B8%89/" style="font-size: 10px;">华三</a> <a href="/tags/%E5%8D%8E%E4%B8%BA/" style="font-size: 10px;">华为</a> <a href="/tags/%E5%8D%9A%E8%BE%BE/" style="font-size: 10px;">博达</a> <a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 10px;">备份</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" style="font-size: 15px;">自动化运维</a> <a href="/tags/%E8%BF%88%E6%99%AE/" style="font-size: 10px;">迈普</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
             </div>
         </div>
     </section>
@@ -196,25 +864,22 @@ bdcom#copy tftp:123.bin flash:Switch.bin 23.50.6.99 </code></pre><p>Tftp服务�
     <div  align="center" class="container">
 		<div class="container">
 		<img src="https://static.dy208.cn/o_1dfilp8ruo521thr1hvf18ji17soa.png">
-		<a href="http://www.beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">皖ICP:0000号</a>
+		<a href="http://www.beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">皖ICP备00000号</a>
 	</div>
-	
-        <!-- 不蒜子统计 -->
-        <span id="busuanzi_container_site_pv">
-                本站总访问量<span id="busuanzi_value_site_pv"></span>次
-        </span>
-        <span class="post-meta-divider">|</span>
-        <span id="busuanzi_container_site_uv" style='display:none'>
-                本站访客数<span id="busuanzi_value_site_uv"></span>人
-        </span>
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	
         <div>
             <div   class="level-start has-text-centered-mobile">
                 <p align="center" class="is-size-7">
                 &copy; 2020 光明常在&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+				<span id="busuanzi_container_site_pv">
+                |本站总访问量<span id="busuanzi_value_site_pv">0</span>次
+				</span>
                 
                 </p>
             </div>
@@ -250,7 +915,7 @@ var IcarusThemeSettings = {
     article: {
         highlight: {
             clipboard: true,
-            fold: 'true'
+            fold: 'unfolded'
         }
     }
 };
@@ -262,8 +927,109 @@ var IcarusThemeSettings = {
 
 
 
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="/js/main.js" defer></script>
 
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
     
 </body>
 </html>
