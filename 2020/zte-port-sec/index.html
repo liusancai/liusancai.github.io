@@ -7,21 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>自由的网工</title>
+<title>zte-port-sec - 自由的网工</title>
 
 
-    <meta name="description" content="8iNYaSg7O9">
-<meta property="og:type" content="website">
-<meta property="og:title" content="自由的网工">
-<meta property="og:url" content="http://mmdav0.coding-pages.com/baidu_verify_8iNYaSg7O9.html">
+    <meta name="description" content="中兴5950 配置端口mac绑定和禁止学习功能  配置前先查看下端口下的mac地址表:  123456AQYX-LaiBangBian-S5950-1#show mac table interface gei-0&#x2F;1&#x2F;1&#x2F;6Total MAC address : 2       MAC            VLAN Outgoing Information">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zte-port-sec">
+<meta property="og:url" content="http://mmdav0.coding-pages.com/2020/zte-port-sec/index.html">
 <meta property="og:site_name" content="自由的网工">
-<meta property="og:description" content="8iNYaSg7O9">
+<meta property="og:description" content="中兴5950 配置端口mac绑定和禁止学习功能  配置前先查看下端口下的mac地址表:  123456AQYX-LaiBangBian-S5950-1#show mac table interface gei-0&#x2F;1&#x2F;1&#x2F;6Total MAC address : 2       MAC            VLAN Outgoing Information">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://mmdav0.coding-pages.com/images/og_image.png">
-<meta property="article:published_time" content="2020-02-01T09:43:31.023Z">
-<meta property="article:modified_time" content="2020-02-01T09:43:31.007Z">
+<meta property="article:published_time" content="2020-02-03T03:41:35.000Z">
+<meta property="article:modified_time" content="2020-02-03T03:47:57.261Z">
 <meta property="article:author" content="光明常在">
-<meta property="article:tag" content="网络 交换机 自动化运维">
+<meta property="article:tag" content="交换机">
+<meta property="article:tag" content="ZTE">
+<meta property="article:tag" content="中兴">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://mmdav0.coding-pages.com/images/og_image.png">
 
@@ -80,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/ico.ico" alt="" height="28">
+                <img src="/images/ico.ico" alt="zte-port-sec" height="28">
             
             </a>
         </div>
@@ -137,20 +139,60 @@
 	
     <div class="card-content article ">
         
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-03T03:41:35.000Z">2020-02-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 320 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                
+                zte-port-sec
             
         </h1>
 		<!-- 置顶插件添加 开始 -->
 		
 		<!-- 置顶插件添加 结束 -->
-		发表：2020-02-01 17:02:02
+		发表：2020-02-03 11:02:00
 		<class="article-titles"> 浏览：<span id="busuanzi_value_page_pv"></span>
 		<!-- 添加横线  -->
 		<hr style="height:1px;border:none;border-top:0.5px dashed #0066CC;" />
         <div class="content">
-            8iNYaSg7O9
+            <p>中兴5950 配置端口mac绑定和禁止学习功能</p>
+<ul>
+<li>配置前先查看下端口下的mac地址表:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AQYX-LaiBangBian-S5950-1#show mac table interface gei-0&#x2F;1&#x2F;1&#x2F;6</span><br><span class="line">Total MAC address : 2       </span><br><span class="line">MAC            VLAN Outgoing Information         Attribute      From Time</span><br><span class="line">-------------- ---- ---------------------------- -------------- ---- -----------</span><br><span class="line">6002.9220.e834 9    gei-0&#x2F;1&#x2F;1&#x2F;6                  Dynamic        0    00:00:06:15</span><br><span class="line">6002.9261.7dfd 9    gei-0&#x2F;1&#x2F;1&#x2F;6                  Dynamic        0    00:00:06:15</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置端口禁止学习mac地址</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AQYX-LaiBangBian-S5950-1#conf t   &#x2F;&#x2F;进入配置模式</span><br><span class="line">Enter configuration commands, one per line.  End with CTRL&#x2F;Z.</span><br><span class="line">AQYX-LaiBangBian-S5950-1(config)#mac  &#x2F;&#x2F;进入mac全局配置模式</span><br><span class="line">AQYX-LaiBangBian-S5950-1(config-mac)#learning disable interface gei-0&#x2F;1&#x2F;1&#x2F;6  &#x2F;&#x2F;命令格式learning disable interface 端口</span><br></pre></td></tr></table></figure>
+
+<p>配置该命令后，最长300smac老化之后，重新使用命令show mac table interface gei-0/1/1/6查看mac地址，会发现原mac地址已经清除。<br>添加永久mac地址到端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AQYX-LaiBangBian-S5950-1(config-mac)#add permanent 6002.9220.e834 interface gei-0&#x2F;1&#x2F;1&#x2F;6 all-owner-vlan  &#x2F;&#x2F;添加永久地址表，重启依然生效。格式 add permanent  MAC地址 interface 端口 all-owner-vlan</span><br><span class="line">AQYX-LaiBangBian-S5950-1(config-mac)#add permanent 6002.9261.7dfd interface gei-0&#x2F;1&#x2F;1&#x2F;6 all-owner-vlan</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看mac相关配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">AQYX-LaiBangBian-S5950-1#show running-config mac</span><br><span class="line">!&lt;mac&gt;</span><br><span class="line">mac</span><br><span class="line">  learning disable interface gei-0&#x2F;1&#x2F;1&#x2F;6</span><br><span class="line">  add permanent 6002.9261.7dfd interface gei-0&#x2F;1&#x2F;1&#x2F;6 vlan 9</span><br><span class="line">  add permanent 6002.9220.e834 interface gei-0&#x2F;1&#x2F;1&#x2F;6 vlan 9</span><br><span class="line">$</span><br><span class="line">!&lt;&#x2F;mac&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看地址表，状态变为permanent</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">AQYX-LaiBangBian-S5950-1#show mac table permanent </span><br><span class="line">Total MAC address : 2       </span><br><span class="line"></span><br><span class="line">Flags: Src--Source filter, Dst--Destination filter</span><br><span class="line">       From:0,driver;1,config;2,VPN;3,802.1X;4,micro;5,DHCP;</span><br><span class="line">            6,PBT;7,EVB;8,OTV;9,TRILL;10,ESADI,</span><br><span class="line">       Time--Day:Hour:Min:Sec</span><br><span class="line"></span><br><span class="line"> MAC            VLAN Outgoing Information         Attribute      From Time</span><br><span class="line">-------------- ---- ---------------------------- -------------- ---- -----------</span><br><span class="line">6002.9220.e834 9    gei-0&#x2F;1&#x2F;1&#x2F;6                  Permanent      1    N&#x2F;A        </span><br><span class="line">6002.9261.7dfd 9    gei-0&#x2F;1&#x2F;1&#x2F;6                  Permanent      1    N&#x2F;A</span><br></pre></td></tr></table></figure>
         </div>
 		<div class="card-content" >
 			<!-- 《添加版权声明 -->
@@ -160,12 +202,44 @@
 
 <!-- #版权基础设定：0-关闭声明； 1-文章对应的md文件里有declare: true属性，才有版权声明； 2-所有文章均有版权声明 -->
 
-  <div class="declare" hidden="hidden"></div>
+  <div class="declare">
+    <strong class="author">	本文作者：</strong>
+    
+      光明常在
+    
+    <br>
+    <strong class="create-time">发布时间：</strong>
+    2020-02-03
+    <br>
+    <strong class="update-time">最后更新：</strong>
+    2020-02-03
+    <br>
+	</span>
+    <strong class="article-titles">本文标题：</strong>
+    <a href="http://mmdav0.coding-pages.com/2020/zte-port-sec/" title="zte-port-sec" target="_blank">zte-port-sec</a>
+    <br>
+    <strong class="article-url">本文链接：</strong>
+    <a href="http://mmdav0.coding-pages.com/2020/zte-port-sec/" title="zte-port-sec" target="_blank">http://mmdav0.coding-pages.com/2020/zte-port-sec/</a>
+    <br>
+    <strong class="copyright">版权声明：</strong>
+    本作品采用
+    <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" title="知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议">CC BY-NC-SA 4.0</a>
+    许可协议进行许可，转载请注明出处！
+  </div>
 
 <!-- 添加版权声明》 -->
 			
 			<!-- 添加版权声明》 -->
 		</div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7"><i class="fa fa-tag"></i></span>
+                    <a class="has-link-grey -link" href="/tags/ZTE/" rel="tag">ZTE</a>, <a class="has-link-grey -link" href="/tags/%E4%B8%AD%E5%85%B4/" rel="tag">中兴</a>, <a class="has-link-grey -link" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" rel="tag">交换机</a>
+                </div>
+            </div>
+        </div>
         
         
         
@@ -204,6 +278,20 @@
 </div>
 
 
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/zte-basic/">
+                <span class="level-item">中兴交换机基础操作</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -251,7 +339,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            3
+                            5
                         </p>
                     </a>
                 </div>
@@ -263,7 +351,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            1
+                            2
                         </p>
                     </a>
                 </div>
@@ -275,7 +363,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            6
+                            8
                         </p>
                     </a>
                 </div>
@@ -341,6 +429,44 @@
         
         <article class="media">
             
+            <a href="/2020/zte-port-sec/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="zte-port-sec">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T03:41:35.000Z">2020-02-03</time></div>
+                    <a href="/2020/zte-port-sec/" class="title has-link-black-ter is-size-6 has-text-weight-normal">zte-port-sec</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/zte-basic/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="中兴交换机基础操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T03:30:04.000Z">2020-02-03</time></div>
+                    <a href="/2020/zte-basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">中兴交换机基础操作</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/swithc-h3c-01/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="H3C交换机基础操作">
@@ -352,7 +478,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-01T08:45:08.000Z">2020-02-01</time></div>
                     <a href="/2020/swithc-h3c-01/" class="title has-link-black-ter is-size-6 has-text-weight-normal">H3C交换机基础操作</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a>
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
                     </p>
                 </div>
             </div>
@@ -415,9 +541,23 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/ZTE/">
+                        <span class="tag">ZTE</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E4%B8%AD%E5%85%B4/">
+                        <span class="tag">中兴</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
                         <span class="tag">交换机</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -507,9 +647,17 @@
                 <span class="level-item">网络技术</span>
             </span>
             <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">
+            <span class="level-start">
+                <span class="level-item">网络基础</span>
+            </span>
+            <span class="level-end">
                 <span class="level-item tag">3</span>
             </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -520,7 +668,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/H3C/" style="font-size: 10px;">H3C</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" style="font-size: 20px;">交换机</a> <a href="/tags/%E5%8D%8E%E4%B8%89/" style="font-size: 10px;">华三</a> <a href="/tags/%E5%8D%8E%E4%B8%BA/" style="font-size: 10px;">华为</a> <a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 10px;">备份</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" style="font-size: 15px;">自动化运维</a>
+        <a href="/tags/H3C/" style="font-size: 10px;">H3C</a> <a href="/tags/ZTE/" style="font-size: 15px;">ZTE</a> <a href="/tags/%E4%B8%AD%E5%85%B4/" style="font-size: 15px;">中兴</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" style="font-size: 20px;">交换机</a> <a href="/tags/%E5%8D%8E%E4%B8%89/" style="font-size: 10px;">华三</a> <a href="/tags/%E5%8D%8E%E4%B8%BA/" style="font-size: 10px;">华为</a> <a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 10px;">备份</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" style="font-size: 15px;">自动化运维</a>
     </div>
 </div>
         
@@ -538,7 +686,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -620,9 +768,17 @@
                 <span class="level-item">网络技术</span>
             </span>
             <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">
+            <span class="level-start">
+                <span class="level-item">网络基础</span>
+            </span>
+            <span class="level-end">
                 <span class="level-item tag">3</span>
             </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -633,7 +789,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/H3C/" style="font-size: 10px;">H3C</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" style="font-size: 20px;">交换机</a> <a href="/tags/%E5%8D%8E%E4%B8%89/" style="font-size: 10px;">华三</a> <a href="/tags/%E5%8D%8E%E4%B8%BA/" style="font-size: 10px;">华为</a> <a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 10px;">备份</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" style="font-size: 15px;">自动化运维</a>
+        <a href="/tags/H3C/" style="font-size: 10px;">H3C</a> <a href="/tags/ZTE/" style="font-size: 15px;">ZTE</a> <a href="/tags/%E4%B8%AD%E5%85%B4/" style="font-size: 15px;">中兴</a> <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/" style="font-size: 20px;">交换机</a> <a href="/tags/%E5%8D%8E%E4%B8%89/" style="font-size: 10px;">华三</a> <a href="/tags/%E5%8D%8E%E4%B8%BA/" style="font-size: 10px;">华为</a> <a href="/tags/%E5%A4%87%E4%BB%BD/" style="font-size: 10px;">备份</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" style="font-size: 15px;">自动化运维</a>
     </div>
 </div>
     
@@ -651,7 +807,7 @@
                     <span class="level-item">二月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
