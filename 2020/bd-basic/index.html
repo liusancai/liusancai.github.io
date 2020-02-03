@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://mmdav0.coding-pages.com/images/og_image.png">
 <meta property="article:published_time" content="2020-02-03T04:00:47.000Z">
-<meta property="article:modified_time" content="2020-02-03T04:11:33.208Z">
+<meta property="article:modified_time" content="2020-02-03T04:16:24.307Z">
 <meta property="article:author" content="光明常在">
 <meta property="article:tag" content="交换机">
 <meta property="article:tag" content="博达">
@@ -172,17 +172,50 @@
         <div class="content">
             <p>一、配置本地用户认证<br>全局配置模式下<br>创建用户，配置用户名为test用户，密码为test<br>username test password 0 test<br>配置特权密码为testpassword<br>enable password testpassword<br>开启密码加密，防止配置里明文保存密码<br>service password-encryption<br>配置认证为本地用户认证<br>aaa authentication login default local   </p>
 <a id="more"></a> 
-<p>配置进行特权认证时使用enable的密码<br>aaa authentication enable default enable<br>配置示例：<br>bdcom_config#username test password 0 test<br>bdcom_config#enable password testpassword<br>bdcom_config#service password-encryption<br>bdcom_config#aaa authentication login default local<br>bdcom_config#aaa authentication enable default enable    </p>
-<p>二、配置VLAN<br>全局配置模式下，创建vlan 10<br>Vlan 10<br>添加描述信息<br>description Bangong<br>配置示例：<br>bdcom#config<br>bdcom_config#vlan 2<br>bdcom_config_vlan2#name Management<br>bdcom_config_vlan2#exit<br>bdcom_config#    </p>
-<p>三、端口加入VLAN<br>配置access类型端口<br>全局模式下进入端口配置模式<br>进入fa0/1<br>interface fastEthernet0/1<br>配置端口模式为access模式<br>switchport mode access<br>配置端口所属vlan<br>switchport pvid 10<br>配置示例：<br>bdcom_config#interface fastEthernet0/1<br>bdcom_config_f0/1#switchport mode access<br>bdcom_config_f0/1#switchport pvid 10<br>bdcom_config_f0/1#exit<br>bdcom_config#<br>配置trunk类型端口（trunk类型端口适用于交换机接交换机）<br>全局模式下进入端口配置模式<br>进入G0/1<br>interface GigaEthernet0/1<br>配置端口模式为trunk模式<br>switchport mode trunk<br>配置端口允许通过的VLAN<br>switchport trunk vlan-allowed all<br>配置示例：<br>bdcom_config#interface GigaEthernet0/1<br>bdcom_config_g0/1#switchport mode trunk<br>bdcom_config_g0/1#switchport trunk vlan-allowed all<br>bdcom_config_g0/1#exit<br>bdcom_config#    </p>
-<p>四、配置接口 VLAN IP<br>全局模式下进入vlanif接口配置模式<br>进入vlan10 三层接口<br>interface VLAN10<br>配置IP地址 192.168.1.1 掩码255.255.255.0<br>ip address 192.168.1.1 255.255.255.0<br>配置示例：<br>bdcom#config<br>bdcom_config#int vlAN 10<br>bdcom_config_v2#ip address 192.168.1.1 255.255.255.0<br>bdcom_config_v2#exit<br>bdcom_config#    </p>
-<p>五、配置静态默认路由<br>全局配置模式下，配置默认路由的下一跳为192.168.1.2<br>ip route default 192.168.1.2<br>配置静态路由：<br>ip route 192.168.2.0 255.255.255.0 192.168.1.2    </p>
-<p>六、配置生成树选项<br>生成树配置需要结合当地网络进行配置，要所有运行在一个拓扑能开启生成树功能的交换机，生成树配置一样。<br>全局模式下关闭生成树功能<br>No spanning-tree<br>配置生成树模式为mstp(配置了模式就开启了生成树)<br>spanning-tree mode mstp<br>配置MST域名<br>spanning-tree mstp nametest<br>配置实例1包含vlan10,vlan20<br>spanning-tree mstp instance 1 vlan 10,20<br>激活MST域配置<br> active region-configuration<br>不包含实例中的vlan，全部属于默认实例0，如vlan1默认属于实例0<br>配置示例：<br>bdcom_config#spanning-tree mode mstp<br>bdcom_config#spanning-tree mstp name test<br>bdcom_config#spanning-tree mstp instance 1 vlan 10    </p>
-<p>七、配置ACL访问控制策略<br>进入acl配置模式<br>ip access-list standard 2000  #数字可配置2000-2999,基础ACL配置，供电网络中采用基础acl#<br>配置一条允许24.50.0.67主机<br>permit 24.50.0.67 255.255.255.255<br>配置一条允许23.50.6.0网段<br>permit 23.50.6.0 255.255.255.0<br>剩余的全部禁止<br> Deny any<br>配置acl注意匹配规则是从上往下匹配，比如rule10 deny已经拒绝了除0,5匹配到的，剩余的都是禁止。这时候rule 15 permit source 23.50.7.0 0.0.0.255，则该策略不生效，23.50.7.0网段还是被全部禁止。<br>配置示例：<br>bdcom_config#ip access-list standard 2000<br>bdcom_config_std#permit 24.50.0.67 255.255.255.255<br>bdcom_config_std#permit 23.50.6.0 255.255.255.0<br>bdcom_config_std#deny any<br>bdcom_config_std#exit<br>bdcom_config    </p>
-<p>八、配置SSH远程登陆<br>全局开启ssh服务<br>ip sshd enable<br>配置ssh服务认证方法列表，默认情况下使用default列表，按照第一节的配置，default的认证方式是local。也可以直接新建认证方法。我们这里都采用默认的，下面命令可以不需要。<br>ip sshd auth-method default<br>配置ssh服务使用的ACL,需要先关闭服务才能启用控制列表<br>ip sshd access-class 2000<br>配置示例：<br>bdcom_config#ip sshd auth-method default<br>bdcom_config#ip sshd access-class 2000<br>bdcom_config#ip sshd enable    </p>
-<p>九、配置时钟同步和时区<br>全局模式下配置时区为北京时区(加8小时)<br>time-zone Beijin 8 0<br>全局模式下配置时钟服务器10.109.192.5为第一个时钟服务器<br>sntp server 10.109.192.5 1<br>全局模式下配置时钟服务器10.109.192.43为备用时钟服务器<br>sntp server 10.109.192.43<br>配置示例：<br>bdcom_config#time-zone Beijin 8 0<br>bdcom_config#sntp server 10.109.192.5 1<br>bdcom_config#sntp server 10.109.192.43    </p>
-<p>十、备份和还原IOS<br>交换机用户模式下通过tftp备份iso固件到23.50.6.99服务器<br>格式：copy flash:Switch.bin  tftp:文件名 IP<br>copy flash:Switch.bin tftp:123.bin 23.50.6.99<br>交换机用户模式下通过tftp服务器还原IOS到交换机中<br>格式：copy tftp:123.bin flash:Switch.bin 23.50.6.99<br>配置示例：    </p>
-<p>bdcom#copy flash:Switch.bin tftp:123.bin 23.50.6.99<br>bdcom#copy tftp:123.bin flash:Switch.bin 23.50.6.99<br>Tftp服务器可以下载软件3CDaemon在电脑上运行即可。    </p>
+<p>配置进行特权认证时使用enable的密码<br>aaa authentication enable default enable<br>配置示例：  </p>
+<pre><code>bdcom_config#username test password 0 test    
+bdcom_config#enable password testpassword    
+bdcom_config#service password-encryption    
+bdcom_config#aaa authentication login default local    
+bdcom_config#aaa authentication enable default enable    </code></pre><p>二、配置VLAN<br>全局配置模式下，创建vlan 10<br>Vlan 10<br>添加描述信息<br>description Bangong<br>配置示例：</p>
+<pre><code>bdcom#config     
+bdcom_config#vlan 2    
+bdcom_config_vlan2#name Management    
+bdcom_config_vlan2#exit    
+bdcom_config#    </code></pre><p>三、端口加入VLAN<br>配置access类型端口<br>全局模式下进入端口配置模式<br>进入fa0/1<br>interface fastEthernet0/1<br>配置端口模式为access模式<br>switchport mode access<br>配置端口所属vlan<br>switchport pvid 10<br>配置示例：</p>
+<pre><code>bdcom_config#interface fastEthernet0/1    
+bdcom_config_f0/1#switchport mode access    
+bdcom_config_f0/1#switchport pvid 10    
+bdcom_config_f0/1#exit    
+bdcom_config#  </code></pre><p>配置trunk类型端口（trunk类型端口适用于交换机接交换机）<br>全局模式下进入端口配置模式<br>进入G0/1<br>interface GigaEthernet0/1<br>配置端口模式为trunk模式<br>switchport mode trunk<br>配置端口允许通过的VLAN<br>switchport trunk vlan-allowed all<br>配置示例：</p>
+<pre><code>bdcom_config#interface GigaEthernet0/1    
+bdcom_config_g0/1#switchport mode trunk    
+bdcom_config_g0/1#switchport trunk vlan-allowed all    
+bdcom_config_g0/1#exit    
+bdcom_config#    </code></pre><p>四、配置接口 VLAN IP<br>全局模式下进入vlanif接口配置模式<br>进入vlan10 三层接口<br>interface VLAN10<br>配置IP地址 192.168.1.1 掩码255.255.255.0<br>ip address 192.168.1.1 255.255.255.0<br>配置示例：   </p>
+<pre><code>bdcom#config     
+bdcom_config#int vlAN 10    
+bdcom_config_v2#ip address 192.168.1.1 255.255.255.0    
+bdcom_config_v2#exit    
+bdcom_config#    </code></pre><p>五、配置静态默认路由<br>全局配置模式下，配置默认路由的下一跳为192.168.1.2<br>ip route default 192.168.1.2<br>配置静态路由：<br>ip route 192.168.2.0 255.255.255.0 192.168.1.2    </p>
+<p>六、配置生成树选项<br>生成树配置需要结合当地网络进行配置，要所有运行在一个拓扑能开启生成树功能的交换机，生成树配置一样。<br>全局模式下关闭生成树功能<br>No spanning-tree<br>配置生成树模式为mstp(配置了模式就开启了生成树)<br>spanning-tree mode mstp<br>配置MST域名<br>spanning-tree mstp nametest<br>配置实例1包含vlan10,vlan20<br>spanning-tree mstp instance 1 vlan 10,20<br>激活MST域配置<br> active region-configuration<br>不包含实例中的vlan，全部属于默认实例0，如vlan1默认属于实例0<br>配置示例： </p>
+<pre><code>bdcom_config#spanning-tree mode mstp    
+bdcom_config#spanning-tree mstp name test    
+bdcom_config#spanning-tree mstp instance 1 vlan 10    </code></pre><p>七、配置ACL访问控制策略<br>进入acl配置模式<br>ip access-list standard 2000  #数字可配置2000-2999,基础ACL配置，供电网络中采用基础acl#<br>配置一条允许24.50.0.67主机<br>permit 24.50.0.67 255.255.255.255<br>配置一条允许23.50.6.0网段<br>permit 23.50.6.0 255.255.255.0<br>剩余的全部禁止<br> Deny any<br>配置acl注意匹配规则是从上往下匹配，比如rule10 deny已经拒绝了除0,5匹配到的，剩余的都是禁止。这时候rule 15 permit source 23.50.7.0 0.0.0.255，则该策略不生效，23.50.7.0网段还是被全部禁止。<br>配置示例： </p>
+<pre><code>bdcom_config#ip access-list standard 2000    
+bdcom_config_std#permit 24.50.0.67 255.255.255.255    
+bdcom_config_std#permit 23.50.6.0 255.255.255.0    
+bdcom_config_std#deny any    
+bdcom_config_std#exit    
+bdcom_config    </code></pre><p>八、配置SSH远程登陆<br>全局开启ssh服务<br>ip sshd enable<br>配置ssh服务认证方法列表，默认情况下使用default列表，按照第一节的配置，default的认证方式是local。也可以直接新建认证方法。我们这里都采用默认的，下面命令可以不需要。<br>ip sshd auth-method default<br>配置ssh服务使用的ACL,需要先关闭服务才能启用控制列表<br>ip sshd access-class 2000<br>配置示例：  </p>
+<pre><code>bdcom_config#ip sshd auth-method default    
+bdcom_config#ip sshd access-class 2000    
+bdcom_config#ip sshd enable    </code></pre><p>九、配置时钟同步和时区<br>全局模式下配置时区为北京时区(加8小时)<br>time-zone Beijin 8 0<br>全局模式下配置时钟服务器10.109.192.5为第一个时钟服务器<br>sntp server 10.109.192.5 1<br>全局模式下配置时钟服务器10.109.192.43为备用时钟服务器<br>sntp server 10.109.192.43<br>配置示例：</p>
+<pre><code>bdcom_config#time-zone Beijin 8 0    
+bdcom_config#sntp server 10.109.192.5 1    
+bdcom_config#sntp server 10.109.192.43    </code></pre><p>十、备份和还原IOS<br>交换机用户模式下通过tftp备份iso固件到23.50.6.99服务器<br>格式：copy flash:Switch.bin  tftp:文件名 IP<br>copy flash:Switch.bin tftp:123.bin 23.50.6.99<br>交换机用户模式下通过tftp服务器还原IOS到交换机中<br>格式：copy tftp:123.bin flash:Switch.bin 23.50.6.99<br>配置示例：    </p>
+<pre><code>bdcom#copy flash:Switch.bin tftp:123.bin 23.50.6.99     
+bdcom#copy tftp:123.bin flash:Switch.bin 23.50.6.99 </code></pre><p>Tftp服务器可以下载软件3CDaemon在电脑上运行即可。    </p>
 <p>十一、交换机常规巡检命令<br>查看三层接口Ip地址<br>show ip interface brief<br>查看二层接口状态信息<br>show interface brief<br>查看交换机的mac地址表<br>show mac address-table<br>查看交换机的arp表<br>show arp<br>查看交换机的生成树状态<br>show spanning-tree<br>查看交换机版本<br>show version<br>查看交换机cpu使用状态<br>Showcpu<br>查看交换机内存使用状态<br>show memory region    </p>
 
         </div>
@@ -273,6 +306,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/maipu/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">迈普交换机基础操作</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -421,6 +461,25 @@
         
         <article class="media">
             
+            <a href="/2020/maipu/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="迈普交换机基础操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T04:15:08.000Z">2020-02-03</time></div>
+                    <a href="/2020/maipu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">迈普交换机基础操作</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/bd-basic/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="博达交换机基础操作">
@@ -488,25 +547,6 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-01T08:45:08.000Z">2020-02-01</time></div>
                     <a href="/2020/swithc-h3c-01/" class="title has-link-black-ter is-size-6 has-text-weight-normal">H3C交换机基础操作</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/maipu/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="迈普交换机基础操作">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-01T08:45:08.000Z">2020-02-01</time></div>
-                    <a href="/2020/maipu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">迈普交换机基础操作</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
                     </p>

@@ -18,8 +18,8 @@
 <meta property="og:description" content="一、配置本地用户认证全局配置模式下configure terminal创建用户，配置用户名为test用户，密码为test，权限为15级username test privilege 15 password 0 test打开本地认证方式authentication line vty login local配置特权密码testpasswordenable password level 15 testp">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://mmdav0.coding-pages.com/images/og_image.png">
-<meta property="article:published_time" content="2020-02-01T08:45:08.000Z">
-<meta property="article:modified_time" content="2020-02-03T04:08:59.680Z">
+<meta property="article:published_time" content="2020-02-03T04:15:08.000Z">
+<meta property="article:modified_time" content="2020-02-03T04:17:31.101Z">
 <meta property="article:author" content="光明常在">
 <meta property="article:tag" content="交换机">
 <meta property="article:tag" content="迈普">
@@ -140,7 +140,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-01T08:45:08.000Z">2020-02-01</time>
+                <time class="level-item has-text-grey" datetime="2020-02-03T04:15:08.000Z">2020-02-03</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
@@ -165,7 +165,7 @@
 		<!-- 置顶插件添加 开始 -->
 		
 		<!-- 置顶插件添加 结束 -->
-		发表：2020-02-01 16:02:00
+		发表：2020-02-03 12:02:00
 		<class="article-titles"> 浏览：<span id="busuanzi_value_page_pv"></span>
 		<!-- 添加横线  -->
 		<hr style="height:1px;border:none;border-top:0.5px dashed #0066CC;" />
@@ -182,11 +182,13 @@
 <h1 id="四、配置静态默认路由"><a href="#四、配置静态默认路由" class="headerlink" title="四、配置静态默认路由"></a>四、配置静态默认路由</h1><p>全局配置模式下，配置默认路由的下一跳为192.168.1.2<br>ip route 0.0.0.0 0.0.0.0 192.168.1.2<br>静态路由配置和默认路由配置命令一样，命令中前0.0.0.0 代表网络号，后面一个0.0.0.0代表掩码。这8个0则能代表所有网段。代码一个24未掩码的网段表示：192.168.2.0 255.255.255.0<br>配置静态路由：<br>ip route 192.168.2.0 255.255.255.0 192.168.1.2<br>配置示例：<br>Switch(config)#ip route 0.0.0.0 0.0.0.0 192.168.1.2    </p>
 <h1 id="五、配置生成树选项"><a href="#五、配置生成树选项" class="headerlink" title="五、配置生成树选项"></a>五、配置生成树选项</h1><p>生成树配置需要结合当地网络进行配置，要所有运行在一个拓扑能开启生成树功能的交换机，生成树配置一样。如果不知道在运行的生成树实例的情况下，建议暂时不配置生成树，避免生成树造成冲突。<br>全局模式下开启生成树功能<br>spanning-tree enable<br>全局模式下关闭生成树功能<br>no spanning-tree enable<br>配置生成树模式为mstp<br>spanning-tree mode mstp<br>进入多实例生成树MSTP配置<br>spanning-tree mst configuration<br>配置生成树域名test<br>region-name test<br>配置实例1包含vlan10<br>instance 1 vlan 10<br>配置实例2包含vlan20<br>instance 2 vlan 20<br>激活生成树配置<br>active configuration pending<br>不包含实例中的vlan，全部属于默认实例0，如vlan1默认属于实例0<br>配置示例： </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Switch#configure terminal     </span><br><span class="line">(config)#spanning-tree enable    </span><br><span class="line">Switch(config)#spanning-tree mode mstp    </span><br><span class="line">Switch(config)#spanning-tree mst configuration     </span><br><span class="line">Switch(config-mst)#region-name test    </span><br><span class="line">Switch(config-mst)#instance 1 vlan 10    </span><br><span class="line">Switch(config-mst)#instance 2 vlan 20    </span><br><span class="line">Switch(config-mst)#active configuration pending    </span><br><span class="line">Switch(config-mst)#exit    </span><br><span class="line">Switch(config)#</span><br></pre></td></tr></table></figure>
-<h1 id="六、配置ACL访问控制策略"><a href="#六、配置ACL访问控制策略" class="headerlink" title="六、配置ACL访问控制策略"></a>六、配置ACL访问控制策略</h1><p>进入acl配置模式<br>ip access-list standard 100     #数字可配置1-1000,基础ACL配置，供电网络中采用基础acl#<br>配置一条允许23.50.0.99主机<br>10 permit host 23.50.6.99<br>配置一条允许23.50.6.0网段<br>20 permit 23.50.6.0 255.255.255.0<br>剩余的全部禁止<br> 30 deny any<br>配置acl注意匹配规则是从上往下匹配，比如deny any已经拒绝了除10,20匹配到的，剩余的都是禁止。这时候40 permit 23.50.7.0 0.0.0.255，则该策略不生效，23.50.7.0网段还是被全部禁止。<br>配置示例：  </p>
+<h1 id="六、配置ACL访问控制策略"><a href="#六、配置ACL访问控制策略" class="headerlink" title="六、配置ACL访问控制策略"></a>六、配置ACL访问控制策略</h1><p>进入acl配置模式<br>ip access-list standard 100     #数字可配置1-1000,基础ACL配置，供电网络中采用基础acl#<br>配置一条允许23.50.0.99主机<br>10 permit host 23.50.6.99<br>配置一条允许23.50.6.0网段<br>20 permit 23.50.6.0 255.255.255.0<br>剩余的全部禁止<br>30 deny any<br>配置acl注意匹配规则是从上往下匹配，比如deny any已经拒绝了除10,20匹配到的，剩余的都是禁止。这时候40 permit 23.50.7.0 0.0.0.255，则该策略不生效，23.50.7.0网段还是被全部禁止。<br>配置示例：  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Switch(config)#ip access-list standard 100    </span><br><span class="line">Switch(config-std-nacl)#10 permit host 23.50.6.99    </span><br><span class="line">Switch(config-std-nacl)#20 permit 23.50.6.0 255.255.255.0    </span><br><span class="line">Switch(config-std-nacl)#30 deny any</span><br></pre></td></tr></table></figure>
 <h1 id="七、配置SSH远程登陆"><a href="#七、配置SSH远程登陆" class="headerlink" title="七、配置SSH远程登陆"></a>七、配置SSH远程登陆</h1><p>全局开启ssh服务<br>ip ssh server<br>进入配置交换机的vty接口模式下，下面相当于可以同时5个人登陆这台交换机<br>user-interface vty 0 4<br>配置远程登陆的认证模式为AAA，即为本地用户认证<br>login local<br>设置超时5分钟自动断开回话<br>exec-timeout 5 0<br>配置只允许ssh方式登陆交换机<br>Protocol input ssh<br>配置示例：    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Switch(config)#line vty 0 4    </span><br><span class="line">Switch(config-line)#login local     </span><br><span class="line">Switch(config-line)#exec-timeout 5 0    </span><br><span class="line">Switch(config-line)#protocol input ssh     </span><br><span class="line">Switch(config-line)#privilege level 0    </span><br><span class="line">Switch(config-line)#exit    </span><br><span class="line">Switch(config)#    </span><br><span class="line">&#96;&#96;&#96;    </span><br><span class="line"># 八、配置时钟同步和时区    </span><br><span class="line">全局模式下配置时区为北京时区(加8小时)    </span><br><span class="line">clock timezone beijin 8    </span><br><span class="line">全局模式下配置时钟服务器10.109.192.5为第一个时钟服务器    </span><br><span class="line">ntp server 10.109.192.5    </span><br><span class="line">全局模式下配置时钟服务器10.109.192.43为备用时钟服务器    </span><br><span class="line">ntp server 10.109.192.43    </span><br><span class="line">配置示例：</span><br></pre></td></tr></table></figure>
-<p>Switch#configure terminal<br>Switch(config)#clock timezone beijin 8<br>Switch(config)#ntp server 10.109.192.5<br>Switch(config)#ntp server 10.109.192.5<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 九、备份和还原IOS    </span><br><span class="line">特权配置模式下进入文件操作管理    </span><br><span class="line">filesystem     </span><br><span class="line">交换机用户模式下通过tftp备份iso固件到23.50.6.99服务器    </span><br><span class="line">格式：copy file-system 本地固件文件名 tftp 服务器IP 远程文件名    </span><br><span class="line">copy file-system web-Spl-1.1.235.rom tftp 23.50.6.99 123.rom    </span><br><span class="line">交换机用户模式下通过tftp服务器还原IOS到交换机中    </span><br><span class="line">格式：copy tftp 服务器IP 远程文件名file-system 本地固件文件名     </span><br><span class="line">copy tftp 23.50.6.99 234 file-system 234    </span><br><span class="line">使用dir命令，查看交换机固件的文件名称    </span><br><span class="line">配置示例：</span><br></pre></td></tr></table></figure><br>Switch#filesystem<br>Switch(config-fs)#dir<br>Switch(config-fs)#copy file-system sp4-g-6.6.4.1.18(C).pck tftp 23.50.6.99 123.pck<br>Switch(config-fs)#copy tftp 23.50.6.99 123.pck file-system sp4-g-6.6.4.1.18(C).pck    </p>
+<p>Switch#configure terminal<br>Switch(config)#clock timezone beijin 8<br>Switch(config)#ntp server 10.109.192.5<br>Switch(config)#ntp server 10.109.192.5    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 九、备份和还原IOS    </span><br><span class="line">特权配置模式下进入文件操作管理    </span><br><span class="line">filesystem     </span><br><span class="line">交换机用户模式下通过tftp备份iso固件到23.50.6.99服务器    </span><br><span class="line">格式：copy file-system 本地固件文件名 tftp 服务器IP 远程文件名    </span><br><span class="line">copy file-system web-Spl-1.1.235.rom tftp 23.50.6.99 123.rom    </span><br><span class="line">交换机用户模式下通过tftp服务器还原IOS到交换机中    </span><br><span class="line">格式：copy tftp 服务器IP 远程文件名file-system 本地固件文件名     </span><br><span class="line">copy tftp 23.50.6.99 234 file-system 234    </span><br><span class="line">使用dir命令，查看交换机固件的文件名称    </span><br><span class="line">配置示例：</span><br></pre></td></tr></table></figure>
+<p>Switch#filesystem<br>Switch(config-fs)#dir<br>Switch(config-fs)#copy file-system sp4-g-6.6.4.1.18(C).pck tftp 23.50.6.99 123.pck<br>Switch(config-fs)#copy tftp 23.50.6.99 123.pck file-system sp4-g-6.6.4.1.18(C).pck    </p>
 <pre><code>Tftp服务器可以下载软件3CDaemon在电脑上运行即可。    
 # 十一、交换机常规巡检命令    
 查看三层接口Ip地址    
@@ -225,7 +227,7 @@ show memory    </code></pre>
     
     <br>
     <strong class="create-time">发布时间：</strong>
-    2020-02-01
+    2020-02-03
     <br>
     <strong class="update-time">最后更新：</strong>
     2020-02-03
@@ -298,17 +300,10 @@ show memory    </code></pre>
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/swithc-h3c-01/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">H3C交换机基础操作</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/switch-0201/">
-                <span class="level-item">各类交换机配置关闭分页(more)提示</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/bd-basic/">
+                <span class="level-item">博达交换机基础操作</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -452,6 +447,25 @@ show memory    </code></pre>
         
         <article class="media">
             
+            <a href="/2020/maipu/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="迈普交换机基础操作">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T04:15:08.000Z">2020-02-03</time></div>
+                    <a href="/2020/maipu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">迈普交换机基础操作</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/bd-basic/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="博达交换机基础操作">
@@ -519,25 +533,6 @@ show memory    </code></pre>
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-01T08:45:08.000Z">2020-02-01</time></div>
                     <a href="/2020/swithc-h3c-01/" class="title has-link-black-ter is-size-6 has-text-weight-normal">H3C交换机基础操作</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/maipu/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="迈普交换机基础操作">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-01T08:45:08.000Z">2020-02-01</time></div>
-                    <a href="/2020/maipu/" class="title has-link-black-ter is-size-6 has-text-weight-normal">迈普交换机基础操作</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
                     </p>
