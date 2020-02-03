@@ -234,7 +234,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 320 个字)
+                    2 分钟 读完 (大约 321 个字)
                 </span>
                 
                 
@@ -243,7 +243,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/zte-port-sec/">zte-port-sec</a>
+                <a class="has-link-black-ter" href="/2020/zte-port-sec/">中兴交换机端口安全配置</a>
             
         </h1>
 		<!-- 置顶插件添加 开始 -->
@@ -259,23 +259,6 @@
 <li>配置前先查看下端口下的mac地址表:</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AQYX-LaiBangBian-S5950-1#show mac table interface gei-0&#x2F;1&#x2F;1&#x2F;6</span><br><span class="line">Total MAC address : 2       </span><br><span class="line">MAC            VLAN Outgoing Information         Attribute      From Time</span><br><span class="line">-------------- ---- ---------------------------- -------------- ---- -----------</span><br><span class="line">6002.9220.e834 9    gei-0&#x2F;1&#x2F;1&#x2F;6                  Dynamic        0    00:00:06:15</span><br><span class="line">6002.9261.7dfd 9    gei-0&#x2F;1&#x2F;1&#x2F;6                  Dynamic        0    00:00:06:15</span><br></pre></td></tr></table></figure>
-<ul>
-<li>配置端口禁止学习mac地址</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AQYX-LaiBangBian-S5950-1#conf t   &#x2F;&#x2F;进入配置模式</span><br><span class="line">Enter configuration commands, one per line.  End with CTRL&#x2F;Z.</span><br><span class="line">AQYX-LaiBangBian-S5950-1(config)#mac  &#x2F;&#x2F;进入mac全局配置模式</span><br><span class="line">AQYX-LaiBangBian-S5950-1(config-mac)#learning disable interface gei-0&#x2F;1&#x2F;1&#x2F;6  &#x2F;&#x2F;命令格式learning disable interface 端口</span><br></pre></td></tr></table></figure>
-
-<p>配置该命令后，最长300smac老化之后，重新使用命令show mac table interface gei-0/1/1/6查看mac地址，会发现原mac地址已经清除。<br>添加永久mac地址到端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AQYX-LaiBangBian-S5950-1(config-mac)#add permanent 6002.9220.e834 interface gei-0&#x2F;1&#x2F;1&#x2F;6 all-owner-vlan  &#x2F;&#x2F;添加永久地址表，重启依然生效。格式 add permanent  MAC地址 interface 端口 all-owner-vlan</span><br><span class="line">AQYX-LaiBangBian-S5950-1(config-mac)#add permanent 6002.9261.7dfd interface gei-0&#x2F;1&#x2F;1&#x2F;6 all-owner-vlan</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看mac相关配置</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">AQYX-LaiBangBian-S5950-1#show running-config mac</span><br><span class="line">!&lt;mac&gt;</span><br><span class="line">mac</span><br><span class="line">  learning disable interface gei-0&#x2F;1&#x2F;1&#x2F;6</span><br><span class="line">  add permanent 6002.9261.7dfd interface gei-0&#x2F;1&#x2F;1&#x2F;6 vlan 9</span><br><span class="line">  add permanent 6002.9220.e834 interface gei-0&#x2F;1&#x2F;1&#x2F;6 vlan 9</span><br><span class="line">$</span><br><span class="line">!&lt;&#x2F;mac&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看地址表，状态变为permanent</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">AQYX-LaiBangBian-S5950-1#show mac table permanent </span><br><span class="line">Total MAC address : 2       </span><br><span class="line"></span><br><span class="line">Flags: Src--Source filter, Dst--Destination filter</span><br><span class="line">       From:0,driver;1,config;2,VPN;3,802.1X;4,micro;5,DHCP;</span><br><span class="line">            6,PBT;7,EVB;8,OTV;9,TRILL;10,ESADI,</span><br><span class="line">       Time--Day:Hour:Min:Sec</span><br><span class="line"></span><br><span class="line"> MAC            VLAN Outgoing Information         Attribute      From Time</span><br><span class="line">-------------- ---- ---------------------------- -------------- ---- -----------</span><br><span class="line">6002.9220.e834 9    gei-0&#x2F;1&#x2F;1&#x2F;6                  Permanent      1    N&#x2F;A        </span><br><span class="line">6002.9261.7dfd 9    gei-0&#x2F;1&#x2F;1&#x2F;6                  Permanent      1    N&#x2F;A</span><br></pre></td></tr></table></figure>
         </div>
 		<div class="card-content" >
 			<!-- 《添加版权声明 -->
@@ -292,6 +275,14 @@
 			<!-- 添加版权声明》 -->
 		</div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/zte-port-sec/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
 		</div>
@@ -323,7 +314,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1626 个字)
+                    11 分钟 读完 (大约 1627 个字)
                 </span>
                 
                 
@@ -343,30 +334,7 @@
 		<!-- 添加横线  -->
 		<hr style="height:1px;border:none;border-top:0.5px dashed #0066CC;" />
         <div class="content">
-            <h1 id="一、配置本地用户认证"><a href="#一、配置本地用户认证" class="headerlink" title="一、配置本地用户认证"></a>一、配置本地用户认证</h1><p>全局配置模式下，进入系统用户配置视图<br>system-user<br>创建用户，配置用户名为test用户<br>user-name test<br>配置用户密码为test<br>password test<br>绑定认证模板<br>bind authentication-template 1<br>绑定授权模板<br>bind authorization-template 1<br>exit<br>退出到用户配置视图，配置认证模板<br>authentication-template 1<br>绑定AAA认证模板<br>bind aaa-authentication-template 2001<br>exit<br>退出到用户配置视图，配置授权模板<br>authorization-template 1<br>配置绑定AAA授权模板<br>bind aaa-authorization-template 2001<br>配置授权权限为15级<br>local-privilege-level 15<br>退出到全局模式下，进入配置AAA认证模板<br>aaa-authentication-template 2001<br>配置认证方式为local<br>aaa-authentication-type local<br>退出到全局模式下，进入配置AAA授权模板<br>aaa-authorization-template 2001<br>配置授权方式为none<br>aaa-authorization-type none<br>退出到全局配置模式下，配置enable密码<br>enable secret level 15 testpassword<br>配置示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">ZTE#config terminal     </span><br><span class="line">ZTE(config)#system-user     </span><br><span class="line">ZTE(config-system-user)#user-name test    </span><br><span class="line">ZTE(config-system-user-username)#password test    </span><br><span class="line">ZTE(config-system-user-username)#bind authentication-template 1    </span><br><span class="line">ZTE(config-system-user-username)#bind authorization-template 1    </span><br><span class="line">ZTE(config-system-user-username)#exit             </span><br><span class="line">ZTE(config-system-user)#authentication-template 1    </span><br><span class="line">ZTE(config-system-user-authen-temp)#bind aaa-authentication-template 2001    </span><br><span class="line">ZTE(config-system-user-authen-temp)#exit    </span><br><span class="line">ZTE(config-system-user)#authorization-template 1    </span><br><span class="line">ZTE(config-system-user-author-temp)#bind aaa-authorization-template 2001    </span><br><span class="line">ZTE(config-system-user-author-temp)#local-privilege-level 15    </span><br><span class="line">ZTE(config-system-user-author-temp)#exit    </span><br><span class="line">ZTE(config-system-user)#exit    </span><br><span class="line">ZTE(config)#aaa-authentication-template 2001    </span><br><span class="line">ZTE(config-aaa-authen-template)#aaa-authentication-type local    </span><br><span class="line">ZTE(config-aaa-authen-template)#exit    </span><br><span class="line">ZTE(config)#aaa-authorization-template 2001    </span><br><span class="line">ZTE(config-aaa-author-template)#aaa-authorization-type none     </span><br><span class="line">ZTE(config-aaa-author-template)#exit    </span><br><span class="line">ZTE(config)#enable secret level 15 testpassword</span><br></pre></td></tr></table></figure>
-<h1 id="二、配置VLAN"><a href="#二、配置VLAN" class="headerlink" title="二、配置VLAN"></a>二、配置VLAN</h1><p>全局配置模式下，进入vlan配置视图<br>switchvlan-configuration<br>创建vlan10<br>Vlan 10<br>为vlan10命名，即添加描述<br>name Bangong<br>配置示例：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ZTE(config)#switchvlan-configuration     </span><br><span class="line">ZTE(config-swvlan)#vlan 10    </span><br><span class="line">ZTE(config-swvlan-sub-10)#name banggong    </span><br><span class="line">ZTE(config-swvlan-sub-10)#exit    </span><br><span class="line">ZTE(config-swvlan)#exit    </span><br><span class="line">ZTE(config)#</span><br></pre></td></tr></table></figure>
-<h1 id="三、端口加入VLAN"><a href="#三、端口加入VLAN" class="headerlink" title="三、端口加入VLAN"></a>三、端口加入VLAN</h1><p>配置ACCESS类型端口<br>全局模式下，进入switchvlan配置模式<br>switchvlan-configuration<br>进入gei-0/1/1/1<br>interface gei-0/1/1/1<br>配置端口模式为access模式<br>switchport mode access<br>配置端口所属vlan<br>switchport access vlan 10<br>配置示例： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ZTE(config)#    </span><br><span class="line">ZTE(config)#switchvlan-configuration      </span><br><span class="line">ZTE(config-swvlan)#interface gei-0&#x2F;1&#x2F;1&#x2F;1    </span><br><span class="line">ZTE(config-swvlan-if-gei-0&#x2F;1&#x2F;1&#x2F;11)#switchport mode access     </span><br><span class="line">ZTE(config-swvlan-if-gei-0&#x2F;1&#x2F;1&#x2F;11)#switchport access vlan 10    </span><br><span class="line">ZTE(config-swvlan-if-gei-0&#x2F;1&#x2F;1&#x2F;11)#exit    </span><br><span class="line">ZTE(config-swvlan)#exit    </span><br><span class="line">ZTE(config)#</span><br></pre></td></tr></table></figure>
-<p>配置Trunk端口（Trunk端口用于交换机和交换机直接互联）<br>进入gei-0/1/1/28<br>interface gei-0/1/1/28<br>配置端口模式为trunk模式<br>switchport mode trunk<br>配置端口允许vlan通过10 20<br>switchport trunk vlan 10,20<br>配置示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ZTE(config)#    </span><br><span class="line">ZTE(config)#switchvlan-configuration      </span><br><span class="line">ZTE(config-swvlan)#interface gei-0&#x2F;1&#x2F;1&#x2F;28    </span><br><span class="line">ZTE(config-swvlan-if-gei-0&#x2F;1&#x2F;1&#x2F;28)#switchport mode trunk    </span><br><span class="line">ZTE(config-swvlan-if-gei-0&#x2F;1&#x2F;1&#x2F;28)#switchport trunk vlan 10,20    </span><br><span class="line">ZTE(config-swvlan-if-gei-0&#x2F;1&#x2F;1&#x2F;28)#exit    </span><br><span class="line">ZTE(config-swvlan)#exit    </span><br><span class="line">ZTE(config)#</span><br></pre></td></tr></table></figure>
-<h1 id="四、配置接口-VLAN-IP"><a href="#四、配置接口-VLAN-IP" class="headerlink" title="四、配置接口 VLAN IP"></a>四、配置接口 VLAN IP</h1><p>全局模式下进入vlanif接口配置模式<br>进入vlan10 三层接口<br>interface vlan10<br>配置IP地址 192.168.1.1 掩码255.255.255.0<br>ip address 192.168.1.1 255.255.255.0<br>配置示例：    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ZTE(config)#interface vlan10    </span><br><span class="line">ZTE(config-if-vlan10)#ip address 192.168.1.1 255.255.255.0    </span><br><span class="line">ZTE(config-if-vlan10)#exit    </span><br><span class="line">ZTE(config)#</span><br></pre></td></tr></table></figure>
-<h1 id="五、配置静态默认路由"><a href="#五、配置静态默认路由" class="headerlink" title="五、配置静态默认路由"></a>五、配置静态默认路由</h1><p>全局配置模式下，配置默认路由的下一跳为192.168.1.2<br>ip route 0.0.0.0 0.0.0.0 192.168.1.2<br>静态路由配置和默认路由配置命令一样，命令中前0.0.0.0 代表网络号，后面一个0.0.0.0代表掩码。这8个0则能代表所有网段。代码一个24未掩码的网段表示：192.168.2.0 255.255.255.0<br>配置静态路由：<br>ip route 192.168.2.0 255.255.255.0 192.168.1.2    </p>
-<h1 id="六、配置生成树选项"><a href="#六、配置生成树选项" class="headerlink" title="六、配置生成树选项"></a>六、配置生成树选项</h1><p>生成树配置需要结合当地网络进行配置，要所有运行在一个拓扑能开启生成树功能的交换机，生成树配置一样。<br>中兴交换机在目前的网络环境中主要作为三层设备，不建议开启生成树。<br>全局模式下进入生成树配置<br>spantree<br>开启生成树功能<br>enable<br>配置生成树模式mstp<br>mode mstp<br>配置多实例域名test<br>mst name test<br>配置实例1包含vlan10,20<br>mst vlans 10,20 instance 1<br>配置示例：    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ZTE(config)#spantree     </span><br><span class="line">ZTE(config-stp)#enable    </span><br><span class="line">ZTE(config-stp)#mode mstp    </span><br><span class="line">ZTE(config-stp)#mst name test    </span><br><span class="line">ZTE(config-stp)#mst vlans 10,20 instance 1    </span><br><span class="line">ZTE(config-stp)#exit    </span><br><span class="line">ZTE(config)#</span><br></pre></td></tr></table></figure>
-<h1 id="七、配置ACL访问控制策略"><a href="#七、配置ACL访问控制策略" class="headerlink" title="七、配置ACL访问控制策略"></a>七、配置ACL访问控制策略</h1><p>进入acl配置模式<br>数字可配置2000-2999,基础ACL配置，供电网络中采用基础acl#<br>配置一条允许24.50.0.67主机<br>rule 0 permit source 24.50.0.67 0.0.0.0<br>配置一条允许23.50.6.0网段<br>rule 5 permit source 23.50.6.0 0.0.0.255<br>剩余的全部禁止<br> rule 10 deny<br>配置acl注意匹配规则是从上往下匹配，比如rule10 deny已经拒绝了除0,5匹配到的，剩余的都是禁止。这时候rule 15 permit source 23.50.7.0 0.0.0.255，则该策略不生效，23.50.7.0网段还是被全部禁止。<br>配置示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ZTE#configure terminal     </span><br><span class="line">ZTE(config)#ipv4-access-list 2000    </span><br><span class="line">ZTE(config-ipv4-acl)# rule 0 permit source 24.50.0.67 0.0.0.0    </span><br><span class="line">ZTE(config-ipv4-acl)# rule 5 permit source 23.50.6.0 0.0.0.255    </span><br><span class="line">ZTE(config-ipv4-acl)# rule 10 deny    </span><br><span class="line">ZTE(config-ipv4-acl)# exit    </span><br><span class="line">ZTE(config)#</span><br></pre></td></tr></table></figure>
-<h1 id="八、配置SSH远程登陆"><a href="#八、配置SSH远程登陆" class="headerlink" title="八、配置SSH远程登陆"></a>八、配置SSH远程登陆</h1><p>全局开启ssh服务<br>ssh server enable<br>配置ssh服务应用ACL访问控制策略2000<br>ssh server access-class ipv4 2000<br>配置示例： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ZTE(config)#ssh server enable    </span><br><span class="line">ZTE(config)#ssh server access-class ipv4 2000</span><br></pre></td></tr></table></figure>
-
-<h1 id="九、配置时钟同步和时区"><a href="#九、配置时钟同步和时区" class="headerlink" title="九、配置时钟同步和时区"></a>九、配置时钟同步和时区</h1><p>用户模式下配置时区为北京时区(加8小时)<br>ZTE(config)#clock timezone beijin 8<br>全局模式下配置时钟服务器10.109.192.5为第一个时钟服务器<br>(config)#ntp server 10.109.192.5 priority 5<br>全局模式下配置时钟服务器10.109.192.43为备用时钟服务器<br>(config)#ntp server 10.109.192.43 priority 4    </p>
-<h1 id="十、备份和还原IOS"><a href="#十、备份和还原IOS" class="headerlink" title="十、备份和还原IOS"></a>十、备份和还原IOS</h1><p>在交换机全局模式下通过tftp备份iso固件到23.50.6.99服务器,中兴交换机固件名为HMPU.set<br>格式：copy tftp root：文件名 //服务器IP/文件名<br>copy  tftp root: /flash/HMPU.set //23.50.6.99/HMPU.set<br>在交换机下全局模式下通过tftp服务器还原IOS到交换机中<br>格式：tftp  服务器IP get 远程文件名 [本地文件名]<br>copy tftp //23.50.6.99/HMPU.set root: HMPU2.set<br>配置示例： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ZTE#copy tftp root: HMPU.set &#x2F;&#x2F;23.50.6.99&#x2F;HMPU.set    </span><br><span class="line">ZTE#copy tftp &#x2F;&#x2F;23.50.6.99&#x2F;HMPU.set root: HMPU2.set</span><br></pre></td></tr></table></figure>
-<p>Tftp服务器可以下载软件3CDaemon在电脑上运行即可。    </p>
-<h1 id="十一、交换机常规巡检命令"><a href="#十一、交换机常规巡检命令" class="headerlink" title="十一、交换机常规巡检命令"></a>十一、交换机常规巡检命令</h1><p>查看三层接口Ip地址<br>show ip interface brief<br>查看二层接口状态信息<br>show interface brief<br>查看交换机的mac地址表<br>show mac table<br>查看交换机的arp表<br>show arp<br>查看交换机的生成树状态<br>show spantree instance 0<br>查看交换机版本<br>show version<br>查看交换机系统时间<br>show clock<br>查看交换机电源状态<br>show power<br>查看交换机风扇状态<br>show fan<br>查看交换机cpu和内存使用状态<br>show processor<br>查看交换机运行配置<br>show running-config<br>查看交换机日志告警<br>show logging alarm<br>查看日志文件<br>show logfile    </p>
-
+            <h1 id="一、配置本地用户认证"><a href="#一、配置本地用户认证" class="headerlink" title="一、配置本地用户认证"></a>一、配置本地用户认证</h1><p>全局配置模式下，进入系统用户配置视图<br>system-user<br>创建用户，配置用户名为test用户<br>user-name test<br>配置用户密码为test<br>password test<br>绑定认证模板<br>bind authentication-template 1<br>绑定授权模板<br>bind authorization-template 1<br>exit   </p>
         </div>
 		<div class="card-content" >
 			<!-- 《添加版权声明 -->
@@ -383,6 +351,14 @@
 			<!-- 添加版权声明》 -->
 		</div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/zte-basic/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
 		</div>
@@ -693,14 +669,14 @@
             
             <a href="/2020/zte-port-sec/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="zte-port-sec">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="中兴交换机端口安全配置">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-03T03:41:35.000Z">2020-02-03</time></div>
-                    <a href="/2020/zte-port-sec/" class="title has-link-black-ter is-size-6 has-text-weight-normal">zte-port-sec</a>
+                    <a href="/2020/zte-port-sec/" class="title has-link-black-ter is-size-6 has-text-weight-normal">中兴交换机端口安全配置</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/">网络技术</a> / <a class="has-link-grey -link" href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>
                     </p>
