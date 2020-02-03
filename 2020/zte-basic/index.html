@@ -141,6 +141,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+					
                 <time class="level-item has-text-grey" datetime="2020-02-03T03:30:04.000Z">2020-02-03</time>
                 
                 <div class="level-item">
@@ -154,6 +155,13 @@
                     11 分钟 读完 (大约 1627 个字)
                 </span>
                 
+				
+					<span class="level-item has-text-grey">
+					<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+					</script>
+					<class="article-titles"> 浏览：<span id="busuanzi_value_page_pv"></span>
+					</span>
+								
                 
             </div>
         </div>
@@ -163,14 +171,8 @@
                 中兴交换机基础操作
             
         </h1>
-		<!-- 置顶插件添加 开始 -->
-		
-		<!-- 置顶插件添加 结束 -->
-		发表：2020-02-03 11:02:00
-		<class="article-titles"> 浏览：<span id="busuanzi_value_page_pv"></span>
-		<!-- 添加横线  -->
-		<hr style="height:1px;border:none;border-top:0.5px dashed #0066CC;" />
         <div class="content">
+			<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
             <h1 id="一、配置本地用户认证"><a href="#一、配置本地用户认证" class="headerlink" title="一、配置本地用户认证"></a>一、配置本地用户认证</h1><p>全局配置模式下，进入系统用户配置视图<br>system-user<br>创建用户，配置用户名为test用户<br>user-name test<br>配置用户密码为test<br>password test<br>绑定认证模板<br>bind authentication-template 1<br>绑定授权模板<br>bind authorization-template 1<br>exit   </p>
 <a id="more"></a> 
 <p>退出到用户配置视图，配置认证模板<br>authentication-template 1<br>绑定AAA认证模板<br>bind aaa-authentication-template 2001<br>exit<br>退出到用户配置视图，配置授权模板<br>authorization-template 1<br>配置绑定AAA授权模板<br>bind aaa-authorization-template 2001<br>配置授权权限为15级<br>local-privilege-level 15<br>退出到全局模式下，进入配置AAA认证模板<br>aaa-authentication-template 2001<br>配置认证方式为local<br>aaa-authentication-type local<br>退出到全局模式下，进入配置AAA授权模板<br>aaa-authorization-template 2001<br>配置授权方式为none<br>aaa-authorization-type none<br>退出到全局配置模式下，配置enable密码<br>enable secret level 15 testpassword<br>配置示例：</p>

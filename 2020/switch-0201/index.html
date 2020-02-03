@@ -141,6 +141,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+					
                 <time class="level-item has-text-grey" datetime="2020-02-01T02:07:08.000Z">2020-02-01</time>
                 
                 <div class="level-item">
@@ -154,6 +155,13 @@
                     2 分钟 读完 (大约 354 个字)
                 </span>
                 
+				
+					<span class="level-item has-text-grey">
+					<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+					</script>
+					<class="article-titles"> 浏览：<span id="busuanzi_value_page_pv"></span>
+					</span>
+								
                 
             </div>
         </div>
@@ -163,14 +171,8 @@
                 各类交换机配置关闭分页(more)提示
             
         </h1>
-		<!-- 置顶插件添加 开始 -->
-		
-		<!-- 置顶插件添加 结束 -->
-		发表：2020-02-01 10:02:00
-		<class="article-titles"> 浏览：<span id="busuanzi_value_page_pv"></span>
-		<!-- 添加横线  -->
-		<hr style="height:1px;border:none;border-top:0.5px dashed #0066CC;" />
         <div class="content">
+			<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
             <p>  在配置自动化运维的时候，我们对交换机进行巡检，因为不是人工手动操作，所以为了效率，我们需要对交换机配置关闭more提示，同时为了防止干扰<br>  我们需要关闭终端提示，来达到最好的巡检效果。下面介绍各类交换机配置的方式：</p>
 <p>  华为和H3C的交换机配置方式一样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">undo info-center enable #关闭信息提示</span><br><span class="line">user-interface vty 0 4 #进入虚拟终端接口</span><br><span class="line">    screen-length 0   #关闭more提示</span><br><span class="line">    quit #退出</span><br></pre></td></tr></table></figure>
