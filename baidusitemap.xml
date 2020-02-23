@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://mmdav0.coding-pages.com/2020/get-video/</loc>
+    <lastmod>2020-02-23</lastmod>
+  </url>  <url>
+    <loc>http://mmdav0.coding-pages.com/2020/switch-0201/</loc>
     <lastmod>2020-02-21</lastmod>
   </url>  <url>
     <loc>http://mmdav0.coding-pages.com/2020/bd-basic/</loc>
@@ -20,9 +23,6 @@
     <lastmod>2020-02-03</lastmod>
   </url>  <url>
     <loc>http://mmdav0.coding-pages.com/2020/switch-back/</loc>
-    <lastmod>2020-02-02</lastmod>
-  </url>  <url>
-    <loc>http://mmdav0.coding-pages.com/2020/switch-0201/</loc>
     <lastmod>2020-02-02</lastmod>
   </url>
 </urlset>
